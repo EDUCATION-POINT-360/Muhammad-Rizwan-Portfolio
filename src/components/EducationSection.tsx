@@ -3,6 +3,7 @@ import { motion, useInView, useReducedMotion } from 'motion/react';
 import { GraduationCap, Award, BookOpen, CheckCircle2, ArrowUpRight, Code, Sparkles } from 'lucide-react';
 import { EDUCATION_DATA } from '../data/portfolioData';
 import { soundFX } from '../utils/audio';
+import { useTheme } from '../context/ThemeContext';
 
 function AnimatedCounter({ targetValue, duration = 1200 }: { targetValue: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -42,6 +43,7 @@ function EducationCard({ edu, idx }: EducationCardProps) {
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
   const shouldReduceMotion = useReducedMotion();
+  const { isDark } = useTheme();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) return;
@@ -58,7 +60,7 @@ function EducationCard({ edu, idx }: EducationCardProps) {
     setGlare({
       x: (x / rect.width) * 100,
       y: (y / rect.height) * 100,
-      opacity: 0.15,
+      opacity: isDark ? 0.12 : 0.16,
     });
   };
 
@@ -79,13 +81,17 @@ function EducationCard({ edu, idx }: EducationCardProps) {
       style={{
         transform: `perspective(1100px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
       }}
-      className="relative p-8 sm:p-10 rounded-3xl bg-[#FFFFFF] border border-[#E6E5DC] hover:border-[#18181B] shadow-[0_8px_30px_rgba(24,24,27,0.03)] hover:shadow-[0_16px_40px_rgba(24,24,27,0.08)] transition-all duration-300 flex flex-col justify-between overflow-hidden preserve-3d"
+      className={`relative p-8 sm:p-10 rounded-3xl border transition-all duration-300 flex flex-col justify-between overflow-hidden preserve-3d shadow-sm hover:shadow-xl ${
+        isDark
+          ? 'bg-[#15151C] border-[#242432] hover:border-[#353548]'
+          : 'bg-[#FFFFFF] border-[#E6E5DC] hover:border-[#18181B]'
+      }`}
     >
       {/* Dynamic Specular Light Glare */}
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300 rounded-3xl"
         style={{
-          background: `radial-gradient(circle 350px at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.85), transparent 80%)`,
+          background: `radial-gradient(circle 350px at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, ${isDark ? '0.3' : '0.85'}), transparent 80%)`,
           opacity: glare.opacity,
         }}
       />
@@ -93,38 +99,54 @@ function EducationCard({ edu, idx }: EducationCardProps) {
       {/* Card Header */}
       <div style={{ transform: 'translateZ(20px)' }}>
         <div className="flex items-center justify-between mb-6">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EFEFE8] text-[11px] font-mono font-medium text-[#18181B] border border-[#D4D3C7]/60">
+          <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-mono font-medium border ${
+            isDark
+              ? 'bg-[#1D1D26] text-[#F4F4F6] border-[#353548]'
+              : 'bg-[#EFEFE8] text-[#18181B] border-[#D4D3C7]/60'
+          }`}>
             <GraduationCap className="w-3.5 h-3.5" />
             <span>{edu.period}</span>
           </span>
-          <div className="text-xs font-mono text-[#7E7E88]">MIANWALI, PAKISTAN</div>
+          <div className={`text-xs font-mono ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
+            MIANWALI, PAKISTAN
+          </div>
         </div>
 
         <div className="flex items-baseline justify-between gap-4 mb-2">
-          <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-[#18181B]">
+          <h3 className={`text-2xl sm:text-3xl font-serif font-semibold ${
+            isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+          }`}>
             {edu.degree}
           </h3>
-          <div className="text-3xl sm:text-4xl font-serif font-bold text-[#18181B]">
+          <div className={`text-3xl sm:text-4xl font-serif font-bold ${
+            isDark ? 'text-emerald-400' : 'text-[#18181B]'
+          }`}>
             <AnimatedCounter targetValue={edu.percentage} />
           </div>
         </div>
 
-        <div className="text-xs font-mono font-semibold tracking-wider text-[#57575E] uppercase mb-4">
+        <div className={`text-xs font-mono font-semibold tracking-wider uppercase mb-4 ${
+          isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'
+        }`}>
           {edu.field}
         </div>
 
         {/* Progress bar visual */}
-        <div className="w-full h-1.5 bg-[#EFEFE8] rounded-full overflow-hidden mb-6">
+        <div className={`w-full h-1.5 rounded-full overflow-hidden mb-6 ${
+          isDark ? 'bg-[#242432]' : 'bg-[#EFEFE8]'
+        }`}>
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${edu.percentage}%` }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
-            className="h-full bg-[#18181B] rounded-full"
+            className={`h-full rounded-full ${isDark ? 'bg-emerald-400' : 'bg-[#18181B]'}`}
           />
         </div>
 
-        <p className="text-base text-[#57575E] leading-relaxed italic border-l-2 border-[#18181B] pl-4 py-1">
+        <p className={`text-base leading-relaxed italic border-l-2 pl-4 py-1 ${
+          isDark ? 'border-emerald-500/50 text-[#A6A6B4]' : 'border-[#18181B] text-[#57575E]'
+        }`}>
           «{edu.description}»
         </p>
       </div>
@@ -132,17 +154,23 @@ function EducationCard({ edu, idx }: EducationCardProps) {
       {/* Card Footer with CTA Button & Lucide Icons */}
       <div
         style={{ transform: 'translateZ(25px)' }}
-        className="mt-8 pt-6 border-t border-[#E6E5DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+        className={`mt-8 pt-6 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+          isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'
+        }`}
       >
         <div className="flex items-center gap-1.5 text-xs font-mono text-[#7E7E88]">
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
           <span>Computer Science Focus</span>
         </div>
 
         <a
           href="#projects"
           onClick={() => soundFX.playTick()}
-          className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#F4F4EE] hover:bg-[#18181B] text-[#18181B] hover:text-[#F9F9F6] text-xs font-mono font-semibold border border-[#D4D3C7] transition-all duration-200 active:scale-95 group/btn"
+          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold border transition-all duration-200 active:scale-95 group/btn ${
+            isDark
+              ? 'bg-[#1D1D26] hover:bg-[#F4F4F6] text-[#F4F4F6] hover:text-[#0C0C0F] border-[#353548]'
+              : 'bg-[#F4F4EE] hover:bg-[#18181B] text-[#18181B] hover:text-[#F9F9F6] border-[#D4D3C7]'
+          }`}
         >
           <span>View Applied Projects</span>
           <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -153,23 +181,32 @@ function EducationCard({ edu, idx }: EducationCardProps) {
 }
 
 export default function EducationSection() {
+  const { isDark } = useTheme();
+
   return (
-    <section id="education" className="py-24 sm:py-32 relative border-b border-[#E6E5DC]/80 bg-[#F4F4EE]/40">
+    <section
+      id="education"
+      className={`py-24 sm:py-32 relative border-b transition-colors duration-300 ${
+        isDark ? 'bg-[#101016] border-[#242432]' : 'bg-[#F4F4EE]/40 border-[#E6E5DC]/80'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-mono tracking-widest text-[#7E7E88] uppercase">
+              <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
                 02 // ACADEMIC FOUNDATION
               </span>
-              <div className="w-12 h-[1px] bg-[#D4D3C7]" />
+              <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#18181B] tracking-tight">
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight ${
+              isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+            }`}>
               Education & Academic Path
             </h2>
           </div>
-          <p className="text-sm font-mono text-[#57575E] max-w-sm">
+          <p className={`text-sm font-mono max-w-sm ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
             Rigorous grounding in Computer Science, mathematics, and technological problem solving in Mianwali.
           </p>
         </div>

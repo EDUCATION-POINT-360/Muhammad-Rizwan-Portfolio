@@ -1,8 +1,24 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Sparkles,
+  ArrowUpRight,
+  Sun,
+  Moon,
+  Laptop,
+  GraduationCap,
+  Layers,
+  Code2,
+  Mail,
+  User,
+  Heart,
+} from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundFX } from '../utils/audio';
+import { useTheme } from '../context/ThemeContext';
+import { ASSETS } from '../assets/images';
 
 interface NavigationProps {
   activeSection: string;
@@ -11,14 +27,14 @@ interface NavigationProps {
 }
 
 const NAV_LINKS = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Journey', href: '#journey' },
-  { name: 'Education Point', href: '#education-point' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Interests', href: '#interests' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About', href: '#about', id: 'about' },
+  { name: 'Education', href: '#education', id: 'education' },
+  { name: 'Journey', href: '#journey', id: 'journey' },
+  { name: 'Education Point', href: '#education-point', id: 'education-point' },
+  { name: 'Projects', href: '#projects', id: 'projects' },
+  { name: 'Skills', href: '#skills', id: 'skills' },
+  { name: 'Interests', href: '#interests', id: 'interests' },
+  { name: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export default function Navigation({
@@ -26,13 +42,15 @@ export default function Navigation({
   animeAtmosphere,
   onToggleAnimeAtmosphere,
 }: NavigationProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 40);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -41,45 +59,64 @@ export default function Navigation({
     e.preventDefault();
     soundFX.playTick();
     setMobileMenuOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <>
       <header
-        id="main-navigation"
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled ? 'py-3' : 'py-5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'py-3' : 'py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav
             aria-label="Main Navigation"
-            className={`flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300 ${
-              isScrolled
-                ? 'bg-[#F9F9F6]/90 backdrop-blur-md shadow-[0_4px_24px_rgba(24,24,27,0.06)] border border-[#E6E5DC]'
-                : 'bg-[#F9F9F6]/70 backdrop-blur-sm border border-transparent'
+            className={`mx-auto flex items-center justify-between rounded-full px-4 sm:px-6 py-2.5 transition-all duration-300 ${
+              isDark
+                ? scrolled
+                  ? 'bg-[#15151C]/90 backdrop-blur-xl border border-[#242432] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+                  : 'bg-[#101016]/80 backdrop-blur-md border border-[#242432]/60'
+                : scrolled
+                ? 'bg-[#FFFFFF]/90 backdrop-blur-xl border border-[#E6E5DC] shadow-[0_8px_32px_rgba(24,24,27,0.06)]'
+                : 'bg-[#FFFFFF]/75 backdrop-blur-md border border-[#E6E5DC]/80'
             }`}
           >
-            {/* Logo Mark */}
+            {/* Left Brand Identity: Photo Avatar + Name */}
             <a
-              id="nav-logo"
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#18181B] rounded-full"
+              className="flex items-center gap-2.5 group focus:outline-none"
             >
-              <span className="w-9 h-9 rounded-full bg-[#18181B] text-[#F9F9F6] flex items-center justify-center font-serif text-lg font-medium transition-transform duration-300 group-hover:scale-105 shadow-sm">
-                MR
-              </span>
-              <div className="hidden sm:flex flex-col">
-                <span className="text-xs font-semibold tracking-wider text-[#18181B] uppercase leading-none">
-                  Muhammad Rizwan
+              <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#18181B]/20 bg-[#18181B] flex-shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-xs">
+                <img
+                  src={ASSETS.portrait}
+                  alt="Muhammad Rizwan"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = ASSETS.portraitRemote;
+                  }}
+                  className="w-full h-full object-cover object-[center_20%]"
+                />
+              </div>
+              <div className="flex flex-col text-left">
+                <span
+                  className={`text-xs font-bold tracking-tight leading-none transition-colors ${
+                    isDark ? 'text-[#F4F4F6] group-hover:text-emerald-400' : 'text-[#18181B] group-hover:text-[#57575E]'
+                  }`}
+                >
+                  MUHAMMAD RIZWAN
                 </span>
-                <span className="text-[10px] text-[#7E7E88] font-medium leading-none mt-1">
-                  2026 Portfolio
+                <span
+                  className={`text-[9px] font-mono tracking-wider leading-tight mt-0.5 ${
+                    isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+                  }`}
+                >
+                  FOUNDER • ARCHITECT
                 </span>
               </div>
             </a>
@@ -87,24 +124,29 @@ export default function Navigation({
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-1 xl:gap-2">
               {NAV_LINKS.map((link) => {
-                const sectionId = link.href.replace('#', '');
-                const isActive = activeSection === sectionId;
+                const isActive = activeSection === link.id;
+
                 return (
                   <a
-                    key={link.name}
-                    id={`nav-link-${sectionId}`}
+                    key={link.id}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`relative px-3 py-1.5 text-xs tracking-wide transition-colors duration-200 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#18181B] ${
+                    className={`relative px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                       isActive
-                        ? 'text-[#18181B] font-semibold'
-                        : 'text-[#57575E] hover:text-[#18181B] font-medium'
+                        ? isDark
+                          ? 'text-[#F4F4F6] font-semibold'
+                          : 'text-[#18181B] font-semibold'
+                        : isDark
+                        ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
+                        : 'text-[#57575E] hover:text-[#18181B]'
                     }`}
                   >
                     {isActive && (
                       <motion.span
-                        layoutId="activeNavPill"
-                        className="absolute inset-0 bg-[#EFEFE8] rounded-full -z-10"
+                        layoutId="activeNavIndicator"
+                        className={`absolute inset-0 rounded-full -z-10 ${
+                          isDark ? 'bg-[#242432]' : 'bg-[#EFEFE8]'
+                        }`}
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -114,9 +156,24 @@ export default function Navigation({
               })}
             </div>
 
-            {/* Right Controls: Anime Sparkle Toggle + CTA + Mobile Toggle */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              {/* Anime Atmosphere Quick Toggle Button */}
+            {/* Right Controls: Theme Toggle + Atmosphere + CTA + Mobile Toggle */}
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              {/* Dark / Light Theme Toggle Button */}
+              <button
+                id="theme-toggle-btn"
+                onClick={toggleTheme}
+                title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                aria-label="Toggle Dark and Light theme"
+                className={`p-2 rounded-full border transition-all text-xs flex items-center justify-center ${
+                  isDark
+                    ? 'bg-[#1D1D26] text-amber-300 border-[#353548] hover:bg-[#242432]'
+                    : 'bg-[#FFFFFF] text-[#18181B] border-[#E6E5DC] hover:bg-[#F4F4EE]'
+                }`}
+              >
+                {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+              </button>
+
+              {/* Atmosphere Quick Toggle Button */}
               <button
                 onClick={() => {
                   soundFX.playChime();
@@ -125,7 +182,11 @@ export default function Navigation({
                 title={animeAtmosphere ? 'Disable Atmospheric Particles' : 'Enable Atmospheric Particles'}
                 className={`p-2 rounded-full border transition-all text-xs flex items-center gap-1.5 ${
                   animeAtmosphere
-                    ? 'bg-[#18181B] text-[#F9F9F6] border-[#18181B]'
+                    ? isDark
+                      ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40'
+                      : 'bg-[#18181B] text-[#F9F9F6] border-[#18181B]'
+                    : isDark
+                    ? 'bg-[#15151C] text-[#747482] border-[#242432] hover:text-[#F4F4F6]'
                     : 'bg-[#FFFFFF] text-[#57575E] border-[#E6E5DC] hover:text-[#18181B]'
                 }`}
               >
@@ -139,7 +200,11 @@ export default function Navigation({
                 id="nav-cta-talk"
                 href="#contact"
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold tracking-wide bg-[#18181B] text-[#F9F9F6] hover:bg-[#333338] transition-all duration-200 shadow-sm active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#18181B]"
+                className={`hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 shadow-sm active:scale-95 ${
+                  isDark
+                    ? 'bg-[#F4F4F6] text-[#0C0C0F] hover:bg-[#E2E2E6]'
+                    : 'bg-[#18181B] text-[#F9F9F6] hover:bg-[#333338]'
+                }`}
               >
                 <span>Let's Talk</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -153,7 +218,9 @@ export default function Navigation({
                   setMobileMenuOpen(!mobileMenuOpen);
                 }}
                 aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-                className="lg:hidden p-2 rounded-full text-[#18181B] hover:bg-[#EFEFE8] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#18181B]"
+                className={`lg:hidden p-2 rounded-full transition-colors ${
+                  isDark ? 'text-[#F4F4F6] hover:bg-[#242432]' : 'text-[#18181B] hover:bg-[#EFEFE8]'
+                }`}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -162,89 +229,140 @@ export default function Navigation({
         </div>
       </header>
 
-      {/* Mobile Menu Sheet */}
+      {/* Mobile Drawer Navigation Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            id="mobile-navigation-drawer"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-x-4 top-20 z-40 bg-[#F9F9F6]/95 backdrop-blur-xl border border-[#E6E5DC] rounded-3xl p-6 shadow-2xl lg:hidden max-h-[85vh] overflow-y-auto"
+            transition={{ duration: 0.2 }}
+            className={`fixed inset-x-4 top-20 z-50 p-6 rounded-3xl backdrop-blur-2xl border shadow-2xl lg:hidden flex flex-col space-y-4 ${
+              isDark
+                ? 'bg-[#15151C]/98 border-[#242432] text-[#F4F4F6]'
+                : 'bg-[#FFFFFF]/98 border-[#E6E5DC] text-[#18181B]'
+            }`}
           >
-            <div className="flex flex-col space-y-3">
-              <div className="pb-3 border-b border-[#E6E5DC] flex items-center justify-between">
+            <div className={`flex items-center justify-between pb-3 border-b ${isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'}`}>
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#D4D3C7] dark:border-[#353548] bg-[#18181B] flex-shrink-0">
+                  <img
+                    src={ASSETS.portrait}
+                    alt="Muhammad Rizwan"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = ASSETS.portraitRemote;
+                    }}
+                    className="w-full h-full object-cover object-[center_20%]"
+                  />
+                </div>
                 <div>
-                  <div className="text-sm font-bold text-[#18181B] tracking-wider uppercase">
-                    {PERSONAL_INFO.name}
+                  <div className={`text-xs font-bold font-serif leading-tight ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
+                    Muhammad Rizwan
                   </div>
-                  <div className="text-xs text-[#7E7E88]">
-                    {PERSONAL_INFO.title}
+                  <div className={`text-[9px] font-mono ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
+                    Founder & Digital Architect
                   </div>
                 </div>
-                <span className="text-[11px] font-mono bg-[#EFEFE8] text-[#57575E] px-2.5 py-1 rounded-full">
-                  Mianwali, PK
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className={`p-1.5 rounded-full transition-colors ${
+                  isDark ? 'hover:bg-[#242432] text-[#A6A6B4]' : 'hover:bg-[#EFEFE8] text-[#57575E]'
+                }`}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="flex flex-col space-y-1">
+              {NAV_LINKS.map((link) => {
+                const isActive = activeSection === link.id;
+
+                return (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      isActive
+                        ? isDark
+                          ? 'bg-[#242432] text-[#F4F4F6]'
+                          : 'bg-[#18181B] text-[#F9F9F6]'
+                        : isDark
+                        ? 'text-[#A6A6B4] hover:bg-[#1D1D26]'
+                        : 'text-[#18181B] hover:bg-[#EFEFE8]'
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className={`pt-4 border-t flex flex-col gap-2 ${isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'}`}>
+              {/* Theme toggle in mobile menu */}
+              <button
+                onClick={toggleTheme}
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl border text-xs font-semibold ${
+                  isDark
+                    ? 'bg-[#1D1D26] border-[#353548] text-amber-300'
+                    : 'bg-[#FFFFFF] border-[#D4D3C7] text-[#18181B]'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                  <span>Theme: {isDark ? 'Dark Mode' : 'Light Mode'}</span>
                 </span>
-              </div>
+                <span className="font-mono text-[10px] uppercase">Toggle ↻</span>
+              </button>
 
-              <div className="grid grid-cols-1 gap-1 pt-2">
-                {NAV_LINKS.map((link) => {
-                  const sectionId = link.href.replace('#', '');
-                  const isActive = activeSection === sectionId;
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                        isActive
-                          ? 'bg-[#18181B] text-[#F9F9F6]'
-                          : 'text-[#18181B] hover:bg-[#EFEFE8]'
-                      }`}
-                    >
-                      <span>{link.name}</span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#F9F9F6]" />}
-                    </a>
-                  );
-                })}
-              </div>
+              <button
+                onClick={() => {
+                  soundFX.playChime();
+                  onToggleAnimeAtmosphere();
+                }}
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl border text-xs font-semibold ${
+                  isDark
+                    ? 'bg-[#101016] border-[#242432] text-[#F4F4F6]'
+                    : 'bg-[#FFFFFF] border-[#D4D3C7] text-[#18181B]'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Atmospheric Particles</span>
+                </span>
+                <span className="font-mono text-[10px]">
+                  {animeAtmosphere ? 'ACTIVE' : 'OFF'}
+                </span>
+              </button>
 
-              <div className="pt-4 border-t border-[#E6E5DC] flex flex-col gap-2">
-                <button
-                  onClick={() => {
-                    soundFX.playChime();
-                    onToggleAnimeAtmosphere();
-                  }}
-                  className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#FFFFFF] border border-[#D4D3C7] text-xs font-semibold text-[#18181B]"
-                >
-                  <span className="flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>Atmospheric Particles</span>
-                  </span>
-                  <span className="font-mono text-[10px]">
-                    {animeAtmosphere ? 'ACTIVE' : 'OFF'}
-                  </span>
-                </button>
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold tracking-wide shadow-sm ${
+                  isDark
+                    ? 'bg-[#F4F4F6] text-[#0C0C0F]'
+                    : 'bg-[#18181B] text-[#F9F9F6]'
+                }`}
+              >
+                <span>Let's Talk</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
 
-                <a
-                  href="#contact"
-                  onClick={(e) => handleNavClick(e, '#contact')}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#18181B] text-[#F9F9F6] text-sm font-semibold tracking-wide shadow-sm"
-                >
-                  <span>Let's Talk</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-
-                <a
-                  href={PERSONAL_INFO.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#EFEFE8] text-[#18181B] text-xs font-medium hover:bg-[#E6E5DC] transition-colors"
-                >
-                  <span>Chat on WhatsApp ({PERSONAL_INFO.phone})</span>
-                </a>
-              </div>
+              <a
+                href={PERSONAL_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-medium transition-colors ${
+                  isDark
+                    ? 'bg-[#1D1D26] text-[#A6A6B4] hover:text-[#F4F4F6]'
+                    : 'bg-[#EFEFE8] text-[#18181B] hover:bg-[#E6E5DC]'
+                }`}
+              >
+                <span>Chat on WhatsApp ({PERSONAL_INFO.phone})</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </motion.div>
         )}

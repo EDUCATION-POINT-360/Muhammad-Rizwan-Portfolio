@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Code, Layout, Cpu, Share2, Check } from 'lucide-react';
 import { SKILLS_DATA } from '../data/portfolioData';
+import { useTheme } from '../context/ThemeContext';
 
 const CATEGORY_ICONS = {
   'WEB DEVELOPMENT': Code,
@@ -10,23 +11,30 @@ const CATEGORY_ICONS = {
 };
 
 export default function SkillsSection() {
+  const { isDark } = useTheme();
+
   return (
-    <section id="skills" className="py-24 sm:py-32 relative border-b border-[#E6E5DC]/80 bg-[#FFFFFF]">
+    <section
+      id="skills"
+      className={`py-24 sm:py-32 relative border-b transition-colors duration-300 ${
+        isDark ? 'bg-[#0C0C0F] border-[#242432]' : 'bg-[#FFFFFF] border-[#E6E5DC]/80'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-mono tracking-widest text-[#7E7E88] uppercase">
+              <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
                 06 // TECHNICAL CAPABILITY
               </span>
-              <div className="w-12 h-[1px] bg-[#D4D3C7]" />
+              <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
             </div>
-            <h2 className="text-4xl sm:text-6xl font-serif text-[#18181B] tracking-tight">
+            <h2 className={`text-4xl sm:text-6xl font-serif tracking-tight ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
               Skills & Expertise
             </h2>
           </div>
-          <p className="text-sm font-mono text-[#57575E] max-w-md">
+          <p className={`text-sm font-mono max-w-md ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
             Integrated technical skill set combining modern web programming, aesthetic user interface design, AI exploration, and digital growth.
           </p>
         </div>
@@ -43,30 +51,46 @@ export default function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-7 rounded-3xl bg-[#F9F9F6] border border-[#E6E5DC] flex flex-col justify-between hover:border-[#18181B] transition-all duration-300 shadow-sm"
+                className={`p-7 rounded-3xl border flex flex-col justify-between transition-all duration-300 shadow-sm ${
+                  isDark
+                    ? 'bg-[#15151C] border-[#242432] hover:border-[#353548]'
+                    : 'bg-[#F9F9F6] border-[#E6E5DC] hover:border-[#18181B]'
+                }`}
               >
                 <div>
-                  <div className="w-10 h-10 rounded-2xl bg-[#FFFFFF] border border-[#E6E5DC] flex items-center justify-center text-[#18181B] mb-5 shadow-sm">
+                  <div className={`w-10 h-10 rounded-2xl border flex items-center justify-center mb-5 shadow-xs ${
+                    isDark
+                      ? 'bg-[#1D1D26] border-[#353548] text-emerald-400'
+                      : 'bg-[#FFFFFF] border-[#E6E5DC] text-[#18181B]'
+                  }`}>
                     <Icon className="w-5 h-5" />
                   </div>
 
-                  <h3 className="text-xs font-mono font-bold tracking-wider text-[#18181B] uppercase mb-5">
+                  <h3 className={`text-xs font-mono font-bold tracking-wider uppercase mb-5 ${
+                    isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+                  }`}>
                     {cat.category}
                   </h3>
 
                   <ul className="space-y-3">
                     {cat.skills.map((skill) => (
-                      <li key={skill} className="flex items-center gap-2.5 text-sm font-medium text-[#333338]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#18181B]" />
+                      <li key={skill} className={`flex items-center gap-2.5 text-sm font-medium ${
+                        isDark ? 'text-[#D0D0DA]' : 'text-[#333338]'
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-emerald-400' : 'bg-[#18181B]'}`} />
                         <span>{skill}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-[#E6E5DC] text-[10px] font-mono text-[#7E7E88] flex items-center justify-between">
+                <div className={`mt-8 pt-4 border-t text-[10px] font-mono flex items-center justify-between ${
+                  isDark ? 'border-[#242432] text-[#747482]' : 'border-[#E6E5DC] text-[#7E7E88]'
+                }`}>
                   <span>DISCIPLINE 0{idx + 1}</span>
-                  <span className="text-[#18181B] font-semibold">Active Practice</span>
+                  <span className={`font-semibold ${isDark ? 'text-emerald-400' : 'text-[#18181B]'}`}>
+                    Active Practice
+                  </span>
                 </div>
               </motion.div>
             );

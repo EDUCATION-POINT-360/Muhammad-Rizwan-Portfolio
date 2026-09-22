@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { useReducedMotion } from 'motion/react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function AnimeParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -23,15 +25,15 @@ export default function AnimeParticles() {
 
     window.addEventListener('resize', handleResize);
 
-    // Generate lightweight subtle anime geometric & petal-like particles
-    const particleCount = Math.min(30, Math.floor(width / 40));
+    // Generate lightweight subtle anime geometric & ambient particles
+    const particleCount = Math.min(28, Math.floor(width / 45));
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 3 + 1.5,
-      speedX: (Math.random() - 0.5) * 0.4 + 0.2,
-      speedY: Math.random() * 0.6 + 0.3,
-      opacity: Math.random() * 0.3 + 0.1,
+      size: Math.random() * 2.5 + 1.2,
+      speedX: (Math.random() - 0.5) * 0.4 + 0.15,
+      speedY: Math.random() * 0.5 + 0.25,
+      opacity: Math.random() * 0.35 + 0.12,
       rotation: Math.random() * 360,
       rotSpeed: (Math.random() - 0.5) * 1.5,
     }));
@@ -57,12 +59,12 @@ export default function AnimeParticles() {
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate((p.rotation * Math.PI) / 180);
-        ctx.fillStyle = `rgba(24, 24, 27, ${p.opacity * 0.5})`;
+        ctx.fillStyle = isDark
+          ? `rgba(244, 244, 246, ${p.opacity * 0.45})`
+          : `rgba(24, 24, 27, ${p.opacity * 0.45})`;
 
-        // Draw diamond / stylized tech petal
+        // Draw diamond / stylized tech crystal petal
         ctx.beginPath();
-        ctx.moveTo(0, -p.size * 1.5);
-        ctx.lineTo(p.size, 0);
         ctx.moveTo(0, -p.size * 1.5);
         ctx.lineTo(p.size, 0);
         ctx.lineTo(0, p.size * 1.5);
@@ -82,7 +84,7 @@ export default function AnimeParticles() {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [shouldReduceMotion]);
+  }, [shouldReduceMotion, isDark]);
 
   if (shouldReduceMotion) return null;
 
@@ -90,7 +92,7 @@ export default function AnimeParticles() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-30 opacity-60"
+      className="fixed inset-0 pointer-events-none z-30 opacity-70"
     />
   );
 }

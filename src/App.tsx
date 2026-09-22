@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import ScrollProgress from './components/ScrollProgress';
@@ -19,10 +20,11 @@ import ContactSection from './components/ContactSection';
 import FinalCtaSection from './components/FinalCtaSection';
 import Footer from './components/Footer';
 
-export default function App() {
+function PortfolioMain() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [animeAtmosphere, setAnimeAtmosphere] = useState(true);
+  const { isDark } = useTheme();
 
   useEffect(() => {
     // Observer for tracking active section
@@ -61,7 +63,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F9F9F6] text-[#18181B] selection:bg-[#18181B] selection:text-[#F9F9F6] relative overflow-x-hidden">
+    <div
+      className={`min-h-screen relative overflow-x-hidden transition-colors duration-300 ${
+        isDark
+          ? 'bg-[#0C0C0F] text-[#F4F4F6] selection:bg-[#F4F4F6] selection:text-[#0C0C0F]'
+          : 'bg-[#F9F9F6] text-[#18181B] selection:bg-[#18181B] selection:text-[#F9F9F6]'
+      }`}
+    >
       {/* Short, premium preloader */}
       <AnimatePresence>
         {loading && <Preloader onComplete={() => setLoading(false)} />}
@@ -70,10 +78,10 @@ export default function App() {
       {/* Top Scroll Progress Indicator */}
       <ScrollProgress />
 
-      {/* Subtle Anime / Cyber Particles Canvas when active */}
+      {/* Subtle Atmospheric Cyber Particles Canvas when active */}
       {animeAtmosphere && <AnimeParticles />}
 
-      {/* Modern Floating Header Navigation */}
+      {/* Modern Floating Header Navigation with Dark/Light Theme Switcher */}
       <Navigation
         activeSection={activeSection}
         animeAtmosphere={animeAtmosphere}
@@ -85,7 +93,7 @@ export default function App() {
         {/* 01. Identity & Hero */}
         <HeroSection />
 
-        {/* 02. About Me & Quick Profile */}
+        {/* 02. About Me & Quick Profile with Real Portrait */}
         <AboutSection />
 
         {/* 03. Cinematic Education Timeline */}
@@ -103,7 +111,7 @@ export default function App() {
         {/* 07. Modern Skills Grid */}
         <SkillsSection />
 
-        {/* 08. Curated Interests & Inspirations */}
+        {/* 08. Curated Interests & Inspirations with Real Architecture Scene */}
         <InterestsSection />
 
         {/* 09. Personality: Behind The Screen */}
@@ -119,7 +127,7 @@ export default function App() {
         <FinalCtaSection />
       </main>
 
-      {/* Interactive 3D Anime Character Companion Widget */}
+      {/* Interactive 3D Concierge Widget */}
       <AnimeCompanion
         animeAtmosphere={animeAtmosphere}
         onToggleAnimeAtmosphere={() => setAnimeAtmosphere((prev) => !prev)}
@@ -128,5 +136,13 @@ export default function App() {
       {/* Footer & Final Brand Statement */}
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <PortfolioMain />
+    </ThemeProvider>
   );
 }

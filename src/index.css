@@ -14,6 +14,42 @@
   --color-border-dark: #D4D3C7;
 }
 
+:root {
+  --bg-page: #F9F9F6;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F4F4EE;
+  --bg-surface: #F9F9F6;
+  --bg-surface-elevated: #FFFFFF;
+  --text-primary: #18181B;
+  --text-secondary: #57575E;
+  --text-muted: #7E7E88;
+  --border-subtle: #E6E5DC;
+  --border-medium: #D4D3C7;
+  --border-strong: #18181B;
+  --accent-primary: #18181B;
+  --accent-text: #F9F9F6;
+  --shadow-card: 0 4px 24px rgba(24, 24, 27, 0.04);
+  --shadow-card-hover: 0 20px 50px rgba(24, 24, 27, 0.1);
+}
+
+html.dark {
+  --bg-page: #0C0C0F;
+  --bg-card: #15151C;
+  --bg-card-subtle: #1D1D26;
+  --bg-surface: #101016;
+  --bg-surface-elevated: #191922;
+  --text-primary: #F4F4F6;
+  --text-secondary: #A6A6B4;
+  --text-muted: #747482;
+  --border-subtle: #242432;
+  --border-medium: #353548;
+  --border-strong: #F4F4F6;
+  --accent-primary: #F4F4F6;
+  --accent-text: #0C0C0F;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -21,9 +57,10 @@
   }
 
   body {
-    background-color: #F9F9F6;
-    color: #18181B;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
@@ -32,10 +69,17 @@
   background-image: radial-gradient(rgba(24, 24, 27, 0.035) 1px, transparent 0);
   background-size: 24px 24px;
 }
+html.dark .bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+}
 
 /* 3D perspective utilities */
 .perspective-1000 {
   perspective: 1000px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
 }
 
 .preserve-3d {
@@ -51,14 +95,14 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F9F9F6;
+  background: var(--bg-page);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4D3C7;
+  background: var(--border-medium);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8A79E;
+  background: var(--text-muted);
 }
 
 /* Reduced motion preference */

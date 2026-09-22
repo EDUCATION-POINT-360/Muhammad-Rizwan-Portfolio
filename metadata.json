@@ -2,5 +2,7 @@
   "name": "Muhammad Rizwan — Founder • Educationist • Digital Architect",
   "description": "Muhammad Rizwan is a technology enthusiast, educationist and digital creator from Mianwali, Pakistan, building educational platforms, AI projects and modern digital experiences.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

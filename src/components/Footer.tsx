@@ -1,7 +1,10 @@
 import { ArrowUp, ArrowUpRight, Heart, MapPin } from 'lucide-react';
 import { PERSONAL_INFO, PROJECTS_DATA } from '../data/portfolioData';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Footer() {
+  const { isDark } = useTheme();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -31,50 +34,69 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="main-footer" className="bg-[#FFFFFF] pt-20 pb-14 text-[#18181B] border-t border-[#E6E5DC]">
+    <footer
+      id="main-footer"
+      className={`pt-20 pb-14 border-t transition-colors duration-300 ${
+        isDark
+          ? 'bg-[#08080B] text-[#F4F4F6] border-[#242432]'
+          : 'bg-[#FFFFFF] text-[#18181B] border-[#E6E5DC]'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Grid: Brand & Link columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-[#E6E5DC]">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b ${
+          isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'
+        }`}>
           {/* Identity Column (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <span className="w-10 h-10 rounded-xl bg-[#18181B] text-[#F9F9F6] flex items-center justify-center font-serif text-lg font-bold">
+              <span className={`w-10 h-10 rounded-xl flex items-center justify-center font-serif text-lg font-bold shadow-xs ${
+                isDark ? 'bg-[#F4F4F6] text-[#0C0C0F]' : 'bg-[#18181B] text-[#F9F9F6]'
+              }`}>
                 MR
               </span>
               <div>
-                <h3 className="text-xl font-serif font-bold text-[#18181B] tracking-tight">
+                <h3 className={`text-xl font-serif font-bold tracking-tight ${
+                  isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+                }`}>
                   MUHAMMAD RIZWAN
                 </h3>
-                <p className="text-xs font-mono text-[#57575E]">
+                <p className={`text-xs font-mono ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
                   {PERSONAL_INFO.title}
                 </p>
               </div>
             </div>
 
-            <p className="text-sm text-[#57575E] max-w-sm leading-relaxed">
+            <p className={`text-sm max-w-sm leading-relaxed ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
               Building purposeful digital experiences through web development, educational platforms, AI tools, and creative digital architecture.
             </p>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-[#7E7E88]">
-              <MapPin className="w-3.5 h-3.5 text-[#18181B]" />
+            <div className={`flex items-center gap-2 text-xs font-mono ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
+              <MapPin className={`w-3.5 h-3.5 ${isDark ? 'text-emerald-400' : 'text-[#18181B]'}`} />
               <span>{PERSONAL_INFO.location}</span>
             </div>
 
             {/* Section 33: Brand Identity Statement Box */}
-            <div className="mt-6 p-5 rounded-2xl bg-[#F9F9F6] border border-[#E6E5DC] text-xs space-y-1">
-              <div className="font-mono text-[10px] tracking-widest text-[#7E7E88] uppercase">
+            <div className={`mt-6 p-5 rounded-2xl border text-xs space-y-1 ${
+              isDark
+                ? 'bg-[#121218] border-[#242432]'
+                : 'bg-[#F9F9F6] border-[#E6E5DC]'
+            }`}>
+              <div className={`font-mono text-[10px] tracking-widest uppercase ${
+                isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+              }`}>
                 BRAND STATEMENT // 2026
               </div>
-              <div className="font-serif font-bold text-sm text-[#18181B]">
+              <div className={`font-serif font-bold text-sm ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
                 MUHAMMAD RIZWAN
               </div>
-              <div className="text-[#57575E]">
+              <div className={isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}>
                 Founder • Educationist • Digital Architect
               </div>
-              <div className="text-[#7E7E88]">
+              <div className={isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}>
                 Mianwali, Pakistan
               </div>
-              <div className="font-serif italic text-sm text-[#18181B] pt-1">
+              <div className={`font-serif italic text-sm pt-1 ${isDark ? 'text-emerald-300' : 'text-[#18181B]'}`}>
                 «{PERSONAL_INFO.motto}»
               </div>
             </div>
@@ -82,7 +104,9 @@ export default function Footer() {
 
           {/* Navigation Links Column (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-[#7E7E88] uppercase mb-4">
+            <h4 className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 ${
+              isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+            }`}>
               NAVIGATION
             </h4>
             <ul className="space-y-2">
@@ -90,7 +114,11 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-xs font-medium text-[#57575E] hover:text-[#18181B] transition-colors"
+                    className={`text-xs font-medium transition-colors ${
+                      isDark
+                        ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
+                        : 'text-[#57575E] hover:text-[#18181B]'
+                    }`}
                   >
                     {link.name}
                   </a>
@@ -101,7 +129,9 @@ export default function Footer() {
 
           {/* Project Links Column (2 cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-[#7E7E88] uppercase mb-4">
+            <h4 className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 ${
+              isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+            }`}>
               PLATFORMS
             </h4>
             <ul className="space-y-2">
@@ -111,10 +141,14 @@ export default function Footer() {
                     href={proj.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium text-[#57575E] hover:text-[#18181B] transition-colors"
+                    className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${
+                      isDark
+                        ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
+                        : 'text-[#57575E] hover:text-[#18181B]'
+                    }`}
                   >
                     <span>{proj.title}</span>
-                    <ArrowUpRight className="w-3 h-3 text-[#7E7E88]" />
+                    <ArrowUpRight className={`w-3 h-3 ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`} />
                   </a>
                 </li>
               ))}
@@ -123,7 +157,9 @@ export default function Footer() {
 
           {/* Real Social & Contact Links Column (3 cols) */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-[#7E7E88] uppercase mb-4">
+            <h4 className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 ${
+              isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+            }`}>
               CONNECT & INITIATIVES
             </h4>
             <ul className="space-y-2.5">
@@ -133,10 +169,14 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium text-[#57575E] hover:text-[#18181B] transition-colors"
+                    className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${
+                      isDark
+                        ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
+                        : 'text-[#57575E] hover:text-[#18181B]'
+                    }`}
                   >
                     <span>{s.name}</span>
-                    <ArrowUpRight className="w-3 h-3 text-[#7E7E88]" />
+                    <ArrowUpRight className={`w-3 h-3 ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`} />
                   </a>
                 </li>
               ))}
@@ -145,17 +185,21 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#7E7E88]">
+        <div className={`pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono ${
+          isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+        }`}>
           <div>
             © 2026 Muhammad Rizwan. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">
-            <span>Designed in Off-White & Charcoal</span>
+            <span>Modern Spatial Portfolio</span>
             <span>•</span>
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-[#18181B] hover:text-[#57575E] transition-colors"
+              className={`inline-flex items-center gap-1.5 transition-colors ${
+                isDark ? 'text-[#F4F4F6] hover:text-emerald-400' : 'text-[#18181B] hover:text-[#57575E]'
+              }`}
             >
               <span>Back to Top</span>
               <ArrowUp className="w-3.5 h-3.5" />

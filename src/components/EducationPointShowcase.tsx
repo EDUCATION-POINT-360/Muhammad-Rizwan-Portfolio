@@ -15,34 +15,49 @@ import {
 } from 'lucide-react';
 import { EDUCATION_POINT_DETAILS } from '../data/portfolioData';
 import { soundFX } from '../utils/audio';
+import { useTheme } from '../context/ThemeContext';
 
 export default function EducationPointShowcase() {
   const shouldReduceMotion = useReducedMotion();
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const { isDark } = useTheme();
 
   return (
-    <section id="education-point" className="py-24 sm:py-36 relative border-b border-[#E6E5DC]/80 bg-[#FFFFFF]">
+    <section
+      id="education-point"
+      className={`py-24 sm:py-36 relative border-b transition-colors duration-300 ${
+        isDark ? 'bg-[#0C0C0F] border-[#242432]' : 'bg-[#FFFFFF] border-[#E6E5DC]/80'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Pill */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-xs font-mono tracking-widest text-[#7E7E88] uppercase">
+          <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
             04 // FLAGSHIP FOUNDATION
           </span>
-          <div className="w-12 h-[1px] bg-[#D4D3C7]" />
+          <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
         </div>
 
         {/* Main Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
           <div className="lg:col-span-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFEFE8] text-[11px] font-mono text-[#18181B] mb-3 border border-[#D4D3C7]/60">
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono mb-3 border ${
+              isDark
+                ? 'bg-[#15151C] text-[#F4F4F6] border-[#353548]'
+                : 'bg-[#EFEFE8] text-[#18181B] border-[#D4D3C7]/60'
+            }`}>
               <span className="font-semibold">{EDUCATION_POINT_DETAILS.role}</span>
               <span>•</span>
               <span>{EDUCATION_POINT_DETAILS.tagline}</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-serif text-[#18181B] tracking-tight leading-[0.98]">
+            <h2 className={`text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[0.98] ${
+              isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+            }`}>
               EDUCATION POINT
             </h2>
-            <p className="mt-4 text-lg sm:text-xl text-[#57575E] leading-relaxed max-w-2xl font-normal">
+            <p className={`mt-4 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal ${
+              isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'
+            }`}>
               «{EDUCATION_POINT_DETAILS.description}»
             </p>
           </div>
@@ -55,11 +70,15 @@ export default function EducationPointShowcase() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundFX.playChime()}
-              className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-[#18181B] text-[#F9F9F6] text-xs font-semibold tracking-wide hover:bg-[#333338] transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 group w-full sm:w-auto"
+              className={`inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-xs font-semibold tracking-wide transition-all duration-200 shadow-sm active:scale-95 group w-full sm:w-auto ${
+                isDark
+                  ? 'bg-[#F4F4F6] text-[#0C0C0F] hover:bg-[#E2E2E6]'
+                  : 'bg-[#18181B] text-[#F9F9F6] hover:bg-[#333338]'
+              }`}
             >
-              <ExternalLink className="w-4 h-4 text-[#F9F9F6]" />
+              <ExternalLink className="w-4 h-4" />
               <span>Launch Education Point</span>
-              <ArrowUpRight className="w-4 h-4 text-[#F9F9F6] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
             <a
@@ -68,25 +87,39 @@ export default function EducationPointShowcase() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => soundFX.playTick()}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#F9F9F6] border border-[#D4D3C7] text-[#18181B] text-xs font-medium tracking-wide hover:bg-[#EFEFE8] transition-all duration-200 active:scale-95 group w-full sm:w-auto"
+              className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border text-xs font-medium tracking-wide transition-all duration-200 active:scale-95 group w-full sm:w-auto ${
+                isDark
+                  ? 'bg-[#15151C] border-[#353548] text-[#F4F4F6] hover:bg-[#1D1D26]'
+                  : 'bg-[#F9F9F6] border-[#D4D3C7] text-[#18181B] hover:bg-[#EFEFE8]'
+              }`}
             >
-              <FileText className="w-4 h-4 text-[#57575E]" />
+              <FileText className={`w-4 h-4 ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`} />
               <span>Browse Resource Schemes</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#7E7E88] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>
 
         {/* Highlight Showcase Container */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#F9F9F6] border border-[#E6E5DC] shadow-[0_8px_32px_rgba(24,24,27,0.03)]">
+        <div className={`p-8 sm:p-12 rounded-3xl border shadow-sm ${
+          isDark
+            ? 'bg-[#15151C] border-[#242432]'
+            : 'bg-[#F9F9F6] border-[#E6E5DC]'
+        }`}>
           {/* Key Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-10 border-b border-[#E6E5DC]">
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 pb-10 border-b ${
+            isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'
+          }`}>
             {EDUCATION_POINT_DETAILS.stats.map((stat, i) => (
               <div key={i} className="flex flex-col">
-                <span className="text-[10px] font-mono tracking-widest text-[#7E7E88] uppercase mb-1">
+                <span className={`text-[10px] font-mono tracking-widest uppercase mb-1 ${
+                  isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
+                }`}>
                   {stat.label}
                 </span>
-                <span className="text-xl sm:text-3xl font-serif font-bold text-[#18181B]">
+                <span className={`text-xl sm:text-3xl font-serif font-bold ${
+                  isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+                }`}>
                   {stat.value}
                 </span>
               </div>
@@ -96,86 +129,107 @@ export default function EducationPointShowcase() {
           {/* Resources Grid: Interactive 3D Cards */}
           <div className="pt-10">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xs font-mono font-bold tracking-widest text-[#18181B] uppercase flex items-center gap-2">
-                <Layers className="w-4 h-4 text-[#18181B]" />
-                <span>Curated Academic Resources Hub</span>
+              <h3 className={`text-xs font-mono font-bold tracking-widest uppercase flex items-center gap-2 ${
+                isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+              }`}>
+                <Layers className="w-4 h-4" />
+                <span>Core Academic Modules & Coverage</span>
               </h3>
-              <span className="text-[11px] font-mono text-[#7E7E88]">10 Core Streams</span>
+              <span className={`text-[11px] font-mono ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
+                [ PUNJAB TEXTBOOK BOARD CURRICULUM ]
+              </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
-              {EDUCATION_POINT_DETAILS.resources.map((item, idx) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {EDUCATION_POINT_DETAILS.resources.map((resourceName, index) => (
                 <div
-                  key={idx}
-                  onMouseEnter={() => {
-                    setHoveredCard(idx);
-                    soundFX.playTick();
-                  }}
+                  key={resourceName}
+                  onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#E6E5DC] hover:border-[#18181B] hover:shadow-[0_8px_20px_rgba(24,24,27,0.06)] hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between group shadow-xs cursor-default"
+                  className={`p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
+                    isDark
+                      ? hoveredCard === index
+                        ? 'bg-[#1D1D26] border-[#353548] shadow-md -translate-y-1'
+                        : 'bg-[#101016] border-[#242432]'
+                      : hoveredCard === index
+                      ? 'bg-[#FFFFFF] border-[#18181B] shadow-md -translate-y-1'
+                      : 'bg-[#FFFFFF] border-[#E6E5DC]'
+                  }`}
                 >
-                  <div className="flex items-center justify-between text-[#7E7E88] group-hover:text-[#18181B] mb-2">
-                    <span className="text-[10px] font-mono font-bold">0{idx + 1}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`text-xs font-mono font-bold ${
+                        isDark ? 'text-emerald-400' : 'text-[#18181B]'
+                      }`}>
+                        {index < 9 ? `0${index + 1}` : index + 1}
+                      </span>
+                      <span className={`w-1.5 h-1.5 rounded-full ${
+                        hoveredCard === index ? 'bg-emerald-500' : isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'
+                      }`} />
+                    </div>
+                    <h4 className={`text-base font-serif font-bold tracking-tight mb-2 ${
+                      isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+                    }`}>
+                      {resourceName}
+                    </h4>
+                    <p className={`text-xs leading-relaxed ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
+                      Verified Punjab board academic repository & exam material.
+                    </p>
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-[#18181B] leading-snug">
-                    {item}
-                  </span>
+
+                  <div className={`mt-6 pt-3 border-t flex items-center justify-between text-[11px] font-mono ${
+                    isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'
+                  }`}>
+                    <span className={isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}>ACCESS</span>
+                    <a
+                      href={EDUCATION_POINT_DETAILS.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`font-semibold flex items-center gap-1 transition-colors ${
+                        isDark ? 'text-[#F4F4F6] hover:text-[#A6A6B4]' : 'text-[#18181B] hover:text-[#57575E]'
+                      }`}
+                    >
+                      <span>Open</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Direct Platform Preview Banner with Modern CTA Buttons */}
-          <div className="mt-10 pt-8 border-t border-[#E6E5DC] flex flex-col md:flex-row items-center justify-between gap-6 bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl border border-[#E6E5DC] shadow-sm">
-            <div className="flex items-start gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-[#18181B] text-[#F9F9F6] flex items-center justify-center font-serif text-2xl font-bold flex-shrink-0 shadow-sm">
-                EP
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h4 className="text-lg font-serif font-bold text-[#18181B]">
-                    Education Point Official Portal
-                  </h4>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-semibold">
-                    LIVE
-                  </span>
-                </div>
-                <p className="text-xs text-[#57575E] mt-1">
-                  Free matric and intermediate curriculum notes, paper patterns, and academic resources for students.
-                </p>
-                <div className="mt-2 text-xs font-mono text-[#18181B] font-medium flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-[#7E7E88]" />
-                  <span>https://educationpoint360.netlify.app/</span>
-                </div>
-              </div>
+          {/* Vision Box */}
+          <div className={`mt-10 p-6 rounded-2xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
+            isDark
+              ? 'bg-[#101016] border-[#242432]'
+              : 'bg-[#FFFFFF] border-[#E6E5DC]'
+          }`}>
+            <div className="space-y-1">
+              <span className={`text-[10px] font-mono font-bold uppercase tracking-wider ${
+                isDark ? 'text-emerald-400' : 'text-[#18181B]'
+              }`}>
+                FOUNDER'S MISSION FOR MIANWALI & BEYOND
+              </span>
+              <p className={`text-sm font-serif italic ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
+                "Education Point was created to bridge digital inequality in access to study materials, empowering every Pakistani student with free, structured knowledge."
+              </p>
             </div>
 
-            {/* CTA Button Group with Lucide Icons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-              <a
-                href={EDUCATION_POINT_DETAILS.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundFX.playChime()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#18181B] text-[#F9F9F6] text-xs font-semibold hover:bg-[#333338] transition-all shadow-sm active:scale-95"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Visit Portal</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
-
-              <a
-                href={EDUCATION_POINT_DETAILS.schemeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundFX.playTick()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#EFEFE8] text-[#18181B] text-xs font-medium hover:bg-[#E6E5DC] transition-all active:scale-95"
-              >
-                <FileText className="w-3.5 h-3.5 text-[#57575E]" />
-                <span>Schemes</span>
-              </a>
-            </div>
+            <a
+              id="ep-visit-link"
+              href={EDUCATION_POINT_DETAILS.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundFX.playTick()}
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold shadow-xs flex-shrink-0 active:scale-95 transition-all ${
+                isDark
+                  ? 'bg-[#F4F4F6] text-[#0C0C0F] hover:bg-[#E2E2E6]'
+                  : 'bg-[#18181B] text-[#F9F9F6] hover:bg-[#333338]'
+              }`}
+            >
+              <span>Visit Portal</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </div>
