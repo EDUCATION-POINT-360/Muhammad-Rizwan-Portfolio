@@ -8,22 +8,23 @@ import AnimeParticles from './components/AnimeParticles';
 import AnimeCompanion from './components/AnimeCompanion';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
-import EducationSection from './components/EducationSection';
-import JourneySection from './components/JourneySection';
-import EducationPointShowcase from './components/EducationPointShowcase';
+import GlobalCareerSection from './components/GlobalCareerSection';
 import ProjectsSection from './components/ProjectsSection';
+import EducationPointShowcase from './components/EducationPointShowcase';
+import FounderSection from './components/FounderSection';
 import SkillsSection from './components/SkillsSection';
-import InterestsSection from './components/InterestsSection';
-import PersonalitySection from './components/PersonalitySection';
-import PhilosophySection from './components/PhilosophySection';
+import EducationSection from './components/EducationSection';
+import CvSection from './components/CvSection';
 import ContactSection from './components/ContactSection';
 import FinalCtaSection from './components/FinalCtaSection';
 import Footer from './components/Footer';
+import CvModal from './components/CvModal';
 
 function PortfolioMain() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
-  const [animeAtmosphere, setAnimeAtmosphere] = useState(true);
+  const [animeAtmosphere, setAnimeAtmosphere] = useState(false);
+  const [cvModalOpen, setCvModalOpen] = useState(false);
   const { isDark } = useTheme();
 
   useEffect(() => {
@@ -31,14 +32,13 @@ function PortfolioMain() {
     const sections = [
       'home',
       'about',
-      'education',
-      'journey',
-      'education-point',
+      'international-career',
       'projects',
+      'education-point',
+      'founder',
       'skills',
-      'interests',
-      'personality',
-      'philosophy',
+      'education',
+      'cv',
       'contact',
     ];
 
@@ -78,63 +78,67 @@ function PortfolioMain() {
       {/* Top Scroll Progress Indicator */}
       <ScrollProgress />
 
-      {/* Subtle Atmospheric Cyber Particles Canvas when active */}
+      {/* Atmospheric Particles Canvas when toggled active */}
       {animeAtmosphere && <AnimeParticles />}
 
-      {/* Modern Floating Header Navigation with Dark/Light Theme Switcher */}
+      {/* Modern Floating Header Navigation with Dark/Light Theme Switcher & CV Download */}
       <Navigation
         activeSection={activeSection}
         animeAtmosphere={animeAtmosphere}
         onToggleAnimeAtmosphere={() => setAnimeAtmosphere((prev) => !prev)}
+        onOpenCvModal={() => setCvModalOpen(true)}
       />
 
-      {/* Main Single Continuous Storytelling Content */}
+      {/* Main Continuous Storytelling Content */}
       <main id="main-content" className="relative">
-        {/* 01. Identity & Hero */}
-        <HeroSection />
+        {/* 01. Hero & Identity */}
+        <HeroSection onOpenCvModal={() => setCvModalOpen(true)} />
 
-        {/* 02. About Me & Quick Profile with Real Portrait */}
-        <AboutSection />
+        {/* 02. About Me & Professional Attributes */}
+        <AboutSection onOpenCvModal={() => setCvModalOpen(true)} />
 
-        {/* 03. Cinematic Education Timeline */}
-        <EducationSection />
+        {/* 03. International Career & Global Remote Alignment */}
+        <GlobalCareerSection onOpenCvModal={() => setCvModalOpen(true)} />
 
-        {/* 04. Vertical Interactive Journey */}
-        <JourneySection />
-
-        {/* 05. Standout Founder Story: Education Point Flagship */}
-        <EducationPointShowcase />
-
-        {/* 06. Interactive 3D Projects Archive */}
+        {/* 04. Selected Projects & Interactive Case Studies */}
         <ProjectsSection />
 
-        {/* 07. Modern Skills Grid */}
+        {/* 05. Standout Founder Story: Building Education Point Flagship */}
+        <EducationPointShowcase />
+
+        {/* 06. Founder & Builder Methodology & Experience */}
+        <FounderSection />
+
+        {/* 07. Core Skills & Verified Tooling */}
         <SkillsSection />
 
-        {/* 08. Curated Interests & Inspirations with Real Architecture Scene */}
-        <InterestsSection />
+        {/* 08. Education, Certifications & Languages */}
+        <EducationSection />
 
-        {/* 09. Personality: Behind The Screen */}
-        <PersonalitySection />
+        {/* 09. Curriculum Vitae Section with ATS Preview & PDF Download */}
+        <CvSection onOpenCvModal={() => setCvModalOpen(true)} />
 
-        {/* 10. Digital Philosophy & Motto */}
-        <PhilosophySection />
-
-        {/* 11. Real Public Contact & Interactive Messenger */}
+        {/* 10. Direct Contact Channels & Interactive Messenger */}
         <ContactSection />
 
-        {/* 12. Final Dramatic Call to Action */}
+        {/* 11. Final Call to Action */}
         <FinalCtaSection />
       </main>
 
-      {/* Interactive 3D Concierge Widget */}
+      {/* Interactive Concierge Widget */}
       <AnimeCompanion
         animeAtmosphere={animeAtmosphere}
         onToggleAnimeAtmosphere={() => setAnimeAtmosphere((prev) => !prev)}
       />
 
-      {/* Footer & Final Brand Statement */}
-      <Footer />
+      {/* Footer */}
+      <Footer onOpenCvModal={() => setCvModalOpen(true)} />
+
+      {/* Curriculum Vitae Full Screen Modal */}
+      <CvModal
+        isOpen={cvModalOpen}
+        onClose={() => setCvModalOpen(false)}
+      />
     </div>
   );
 }

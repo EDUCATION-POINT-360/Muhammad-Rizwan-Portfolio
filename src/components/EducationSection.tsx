@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'motion/react';
-import { GraduationCap, Award, BookOpen, CheckCircle2, ArrowUpRight, Code, Sparkles } from 'lucide-react';
-import { EDUCATION_DATA } from '../data/portfolioData';
+import { GraduationCap, Award, BookOpen, CheckCircle2, ArrowUpRight, Code, Sparkles, Globe, ShieldCheck } from 'lucide-react';
+import { EDUCATION_DATA, LANGUAGES_DATA, CERTIFICATIONS_NOTE } from '../data/portfolioData';
 import { soundFX } from '../utils/audio';
 import { useTheme } from '../context/ThemeContext';
 
@@ -87,7 +87,7 @@ function EducationCard({ edu, idx }: EducationCardProps) {
           : 'bg-[#FFFFFF] border-[#E6E5DC] hover:border-[#18181B]'
       }`}
     >
-      {/* Dynamic Specular Light Glare */}
+      {/* Glare */}
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300 rounded-3xl"
         style={{
@@ -104,7 +104,7 @@ function EducationCard({ edu, idx }: EducationCardProps) {
               ? 'bg-[#1D1D26] text-[#F4F4F6] border-[#353548]'
               : 'bg-[#EFEFE8] text-[#18181B] border-[#D4D3C7]/60'
           }`}>
-            <GraduationCap className="w-3.5 h-3.5" />
+            <GraduationCap className="w-3.5 h-3.5 text-emerald-500" />
             <span>{edu.period}</span>
           </span>
           <div className={`text-xs font-mono ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
@@ -140,18 +140,18 @@ function EducationCard({ edu, idx }: EducationCardProps) {
             whileInView={{ width: `${edu.percentage}%` }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
-            className={`h-full rounded-full ${isDark ? 'bg-emerald-400' : 'bg-[#18181B]'}`}
+            className="h-full rounded-full bg-emerald-500"
           />
         </div>
 
-        <p className={`text-base leading-relaxed italic border-l-2 pl-4 py-1 ${
-          isDark ? 'border-emerald-500/50 text-[#A6A6B4]' : 'border-[#18181B] text-[#57575E]'
+        <p className={`text-sm sm:text-base leading-relaxed border-l-2 pl-4 py-1 ${
+          isDark ? 'border-emerald-500/50 text-[#C8C8D4]' : 'border-[#18181B] text-[#44444C]'
         }`}>
-          «{edu.description}»
+          “{edu.description}”
         </p>
       </div>
 
-      {/* Card Footer with CTA Button & Lucide Icons */}
+      {/* Card Footer */}
       <div
         style={{ transform: 'translateZ(25px)' }}
         className={`mt-8 pt-6 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
@@ -166,7 +166,7 @@ function EducationCard({ edu, idx }: EducationCardProps) {
         <a
           href="#projects"
           onClick={() => soundFX.playTick()}
-          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold border transition-all duration-200 active:scale-95 group/btn ${
+          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-semibold border transition-all active:scale-95 group/btn ${
             isDark
               ? 'bg-[#1D1D26] hover:bg-[#F4F4F6] text-[#F4F4F6] hover:text-[#0C0C0F] border-[#353548]'
               : 'bg-[#F4F4EE] hover:bg-[#18181B] text-[#18181B] hover:text-[#F9F9F6] border-[#D4D3C7]'
@@ -196,7 +196,7 @@ export default function EducationSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
-                02 // ACADEMIC FOUNDATION
+                06 // EDUCATION, CERTIFICATIONS & LANGUAGES
               </span>
               <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
             </div>
@@ -207,15 +207,85 @@ export default function EducationSection() {
             </h2>
           </div>
           <p className={`text-sm font-mono max-w-sm ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
-            Rigorous grounding in Computer Science, mathematics, and technological problem solving in Mianwali.
+            Factual grounding in Computer Science, mathematics, and technological problem solving in Mianwali, Pakistan.
           </p>
         </div>
 
-        {/* Enhanced 3D Education Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative">
+        {/* 3D Education Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative mb-14">
           {EDUCATION_DATA.map((edu, idx) => (
             <EducationCard key={edu.degree} edu={edu} idx={idx} />
           ))}
+        </div>
+
+        {/* Certifications & Languages Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Certifications Card */}
+          <div
+            className={`p-7 rounded-3xl border transition-colors ${
+              isDark ? 'bg-[#15151C] border-[#242432]' : 'bg-[#FFFFFF] border-[#E6E5DC]'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                <h3 className={`text-base font-serif font-bold tracking-tight ${
+                  isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+                }`}>
+                  Professional Certifications
+                </h3>
+              </div>
+              <span className={`text-[10px] font-mono uppercase px-2.5 py-1 rounded-full border ${
+                isDark ? 'bg-[#1E1E2A] text-[#A6A6B4] border-[#303042]' : 'bg-[#EFEFE8] text-[#57575E] border-[#D4D3C7]'
+              }`}>
+                VERIFICATION STATUS
+              </span>
+            </div>
+            <p className={`text-sm leading-relaxed ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
+              {CERTIFICATIONS_NOTE}
+            </p>
+            <div className={`mt-4 pt-4 border-t text-xs font-mono flex items-center gap-1.5 ${
+              isDark ? 'border-[#242432] text-[#747482]' : 'border-[#E6E5DC] text-[#7E7E88]'
+            }`}>
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+              <span>Strict compliance with authentic credentials policy</span>
+            </div>
+          </div>
+
+          {/* Languages Card */}
+          <div
+            className={`p-7 rounded-3xl border transition-colors ${
+              isDark ? 'bg-[#15151C] border-[#242432]' : 'bg-[#FFFFFF] border-[#E6E5DC]'
+            }`}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Globe className="w-5 h-5 text-emerald-500" />
+                <h3 className={`text-base font-serif font-bold tracking-tight ${
+                  isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+                }`}>
+                  Languages
+                </h3>
+              </div>
+              <span className={`text-[10px] font-mono uppercase px-2.5 py-1 rounded-full border ${
+                isDark ? 'bg-[#1E1E2A] text-emerald-400 border-emerald-500/30' : 'bg-[#EBF7F0] text-emerald-700 border-emerald-500/30'
+              }`}>
+                INTERNATIONAL COMMUNICATION
+              </span>
+            </div>
+            <div className="space-y-3">
+              {LANGUAGES_DATA.map((lang) => (
+                <div key={lang.language} className="flex items-center justify-between py-1.5 border-b border-current/10">
+                  <span className={`text-sm font-semibold ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
+                    {lang.language}
+                  </span>
+                  <span className={`text-xs font-mono ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                    {lang.level}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

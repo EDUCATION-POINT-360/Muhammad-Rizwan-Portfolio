@@ -1,8 +1,12 @@
-import { ArrowUp, ArrowUpRight, Heart, MapPin } from 'lucide-react';
-import { PERSONAL_INFO, PROJECTS_DATA } from '../data/portfolioData';
+import { ArrowUp, ArrowUpRight, MapPin } from 'lucide-react';
+import { PERSONAL_INFO } from '../data/portfolioData';
 import { useTheme } from '../context/ThemeContext';
 
-export default function Footer() {
+interface FooterProps {
+  onOpenCvModal?: () => void;
+}
+
+export default function Footer({ onOpenCvModal }: FooterProps) {
   const { isDark } = useTheme();
 
   const scrollToTop = () => {
@@ -12,25 +16,23 @@ export default function Footer() {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Education', href: '#education' },
-    { name: 'Journey', href: '#journey' },
-    { name: 'Education Point', href: '#education-point' },
+    { name: 'International Scope', href: '#international-career' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Interests', href: '#interests' },
-    { name: 'Personality', href: '#personality' },
-    { name: 'Philosophy', href: '#philosophy' },
+    { name: 'Education Point', href: '#education-point' },
+    { name: 'Founder & Builder', href: '#founder' },
+    { name: 'Skills & Tools', href: '#skills' },
+    { name: 'Education', href: '#education' },
+    { name: 'Curriculum Vitae', href: '#cv' },
     { name: 'Contact', href: '#contact' },
   ];
 
   const socialLinks = [
-    { name: 'WhatsApp (+92 331 4220506)', href: PERSONAL_INFO.whatsappUrl },
-    { name: 'Personal Instagram (@itx.wani1)', href: PERSONAL_INFO.personalInstagram },
-    { name: 'Education Point Instagram', href: PERSONAL_INFO.epInstagram },
-    { name: 'Facebook Profile', href: PERSONAL_INFO.facebookUrl },
-    { name: 'YouTube Channel', href: PERSONAL_INFO.youtubeUrl },
-    { name: 'EP WhatsApp Channel', href: PERSONAL_INFO.epWhatsappChannel },
-    { name: 'Email (educationpoint0360@gmail.com)', href: `mailto:${PERSONAL_INFO.epEmail}` },
+    { name: 'Email Direct', href: `mailto:${PERSONAL_INFO.email}`, note: PERSONAL_INFO.email },
+    { name: 'WhatsApp', href: PERSONAL_INFO.whatsappUrl, note: PERSONAL_INFO.phone },
+    { name: 'Education Point Platform', href: PERSONAL_INFO.websiteUrl, note: 'educationpoint360.netlify.app' },
+    { name: 'Portfolio Identity', href: PERSONAL_INFO.portfolioUrl, note: 'rizwanep.netlify.app' },
+    { name: 'Instagram', href: PERSONAL_INFO.instagramUrl, note: PERSONAL_INFO.instagramHandle },
+    { name: 'WhatsApp Channel', href: PERSONAL_INFO.whatsappChannelUrl, note: 'Official Announcements' },
   ];
 
   return (
@@ -43,14 +45,14 @@ export default function Footer() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Grid: Brand & Link columns */}
+        {/* Top Grid */}
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b ${
           isDark ? 'border-[#242432]' : 'border-[#E6E5DC]'
         }`}>
-          {/* Identity Column (5 cols) */}
+          {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <span className={`w-10 h-10 rounded-xl flex items-center justify-center font-serif text-lg font-bold shadow-xs ${
+              <span className={`w-11 h-11 rounded-2xl flex items-center justify-center font-serif text-lg font-bold shadow-xs ${
                 isDark ? 'bg-[#F4F4F6] text-[#0C0C0F]' : 'bg-[#18181B] text-[#F9F9F6]'
               }`}>
                 MR
@@ -59,124 +61,81 @@ export default function Footer() {
                 <h3 className={`text-xl font-serif font-bold tracking-tight ${
                   isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
                 }`}>
-                  MUHAMMAD RIZWAN
+                  {PERSONAL_INFO.name}
                 </h3>
                 <p className={`text-xs font-mono ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
-                  {PERSONAL_INFO.title}
+                  {PERSONAL_INFO.headline}
                 </p>
               </div>
             </div>
 
             <p className={`text-sm max-w-sm leading-relaxed ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
-              Building purposeful digital experiences through web development, educational platforms, AI tools, and creative digital architecture.
+              {PERSONAL_INFO.shortIntro}
             </p>
 
-            <div className={`flex items-center gap-2 text-xs font-mono ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
-              <MapPin className={`w-3.5 h-3.5 ${isDark ? 'text-emerald-400' : 'text-[#18181B]'}`} />
-              <span>{PERSONAL_INFO.location}</span>
+            <div className="pt-2">
+              <p className="font-serif italic text-base text-emerald-500 font-semibold">
+                «{PERSONAL_INFO.motto}»
+              </p>
             </div>
 
-            {/* Section 33: Brand Identity Statement Box */}
-            <div className={`mt-6 p-5 rounded-2xl border text-xs space-y-1 ${
-              isDark
-                ? 'bg-[#121218] border-[#242432]'
-                : 'bg-[#F9F9F6] border-[#E6E5DC]'
-            }`}>
-              <div className={`font-mono text-[10px] tracking-widest uppercase ${
-                isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
-              }`}>
-                BRAND STATEMENT // 2026
-              </div>
-              <div className={`font-serif font-bold text-sm ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
-                MUHAMMAD RIZWAN
-              </div>
-              <div className={isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}>
-                Founder • Educationist • Digital Architect
-              </div>
-              <div className={isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}>
-                Mianwali, Pakistan
-              </div>
-              <div className={`font-serif italic text-sm pt-1 ${isDark ? 'text-emerald-300' : 'text-[#18181B]'}`}>
-                «{PERSONAL_INFO.motto}»
-              </div>
+            <div className={`flex items-center gap-2 text-xs font-mono pt-1 ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
+              <MapPin className="w-3.5 h-3.5 text-emerald-500" />
+              <span>{PERSONAL_INFO.location}</span>
             </div>
           </div>
 
-          {/* Navigation Links Column (2 cols) */}
-          <div className="lg:col-span-2">
+          {/* Navigation Links Column (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
             <h4 className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 ${
               isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
             }`}>
-              NAVIGATION
+              Navigation
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-xs font-mono">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className={`text-xs font-medium transition-colors ${
+                    className={`transition-colors flex items-center justify-between group ${
                       isDark
                         ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
                         : 'text-[#57575E] hover:text-[#18181B]'
                     }`}
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Project Links Column (2 cols) */}
-          <div className="lg:col-span-2">
+          {/* Verified Channels Column (4 cols) */}
+          <div className="lg:col-span-4 space-y-3">
             <h4 className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 ${
               isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
             }`}>
-              PLATFORMS
+              Verified Channels & Platforms
             </h4>
-            <ul className="space-y-2">
-              {PROJECTS_DATA.map((proj) => (
-                <li key={proj.id}>
+            <ul className="space-y-2 text-xs font-mono">
+              {socialLinks.map((link) => (
+                <li key={link.name}>
                   <a
-                    href={proj.url}
+                    href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${
+                    className={`p-2.5 rounded-xl border flex items-center justify-between transition-colors ${
                       isDark
-                        ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
-                        : 'text-[#57575E] hover:text-[#18181B]'
+                        ? 'bg-[#121218] border-[#242432] hover:border-emerald-500/50 text-[#D0D0DA]'
+                        : 'bg-[#F9F9F6] border-[#E6E5DC] hover:border-[#18181B] text-[#333338]'
                     }`}
                   >
-                    <span>{proj.title}</span>
-                    <ArrowUpRight className={`w-3 h-3 ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Real Social & Contact Links Column (3 cols) */}
-          <div className="lg:col-span-3">
-            <h4 className={`text-xs font-mono font-bold tracking-widest uppercase mb-4 ${
-              isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
-            }`}>
-              CONNECT & INITIATIVES
-            </h4>
-            <ul className="space-y-2.5">
-              {socialLinks.map((s) => (
-                <li key={s.name}>
-                  <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${
-                      isDark
-                        ? 'text-[#A6A6B4] hover:text-[#F4F4F6]'
-                        : 'text-[#57575E] hover:text-[#18181B]'
-                    }`}
-                  >
-                    <span>{s.name}</span>
-                    <ArrowUpRight className={`w-3 h-3 ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`} />
+                    <div>
+                      <div className="font-semibold">{link.name}</div>
+                      <div className="text-[10px] opacity-60 truncate">{link.note}</div>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-60 flex-shrink-0" />
                   </a>
                 </li>
               ))}
@@ -185,26 +144,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className={`pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono ${
-          isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
-        }`}>
-          <div>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+          <div className={isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}>
             © 2026 Muhammad Rizwan. All rights reserved.
           </div>
 
-          <div className="flex items-center gap-6">
-            <span>Modern Spatial Portfolio</span>
-            <span>•</span>
-            <button
-              onClick={scrollToTop}
-              className={`inline-flex items-center gap-1.5 transition-colors ${
-                isDark ? 'text-[#F4F4F6] hover:text-emerald-400' : 'text-[#18181B] hover:text-[#57575E]'
-              }`}
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          <button
+            onClick={scrollToTop}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-colors ${
+              isDark
+                ? 'border-[#353548] text-[#A6A6B4] hover:text-[#F4F4F6] hover:bg-[#1D1D26]'
+                : 'border-[#D4D3C7] text-[#57575E] hover:text-[#18181B] hover:bg-[#EFEFE8]'
+            }`}
+          >
+            <span>Back to Top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>

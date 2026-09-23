@@ -9,6 +9,14 @@ export interface ProjectItem {
   buttonLabel: string;
   tags: string[];
   featured?: boolean;
+  role?: string;
+  problem?: string;
+  concept?: string;
+  solution?: string;
+  keyFeatures?: string[];
+  outcome?: string;
+  demoUrl?: string;
+  githubUrl?: string;
 }
 
 export interface EducationItem {

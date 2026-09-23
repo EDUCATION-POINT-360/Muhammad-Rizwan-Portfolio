@@ -1,13 +1,13 @@
 import { motion } from 'motion/react';
-import { Code, Layout, Cpu, Share2, Check } from 'lucide-react';
+import { Code, Layout, Cpu, Sparkles, Layers, CheckCircle2, Wrench } from 'lucide-react';
 import { SKILLS_DATA } from '../data/portfolioData';
 import { useTheme } from '../context/ThemeContext';
 
-const CATEGORY_ICONS = {
-  'WEB DEVELOPMENT': Code,
-  'UI/UX & DESIGN': Layout,
-  'TECHNOLOGY': Cpu,
-  'DIGITAL': Share2,
+const CATEGORY_ICONS: Record<string, any> = {
+  'Digital Product Development': Layers,
+  'Web Technologies': Code,
+  'Platforms & Tools': Wrench,
+  'AI & Emerging Technology': Sparkles,
 };
 
 export default function SkillsSection() {
@@ -26,23 +26,23 @@ export default function SkillsSection() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
-                06 // TECHNICAL CAPABILITY
+                05 // TECHNICAL & PRODUCT CAPABILITY
               </span>
               <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
             </div>
             <h2 className={`text-4xl sm:text-6xl font-serif tracking-tight ${isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}`}>
-              Skills & Expertise
+              Core Skills & Tools
             </h2>
           </div>
           <p className={`text-sm font-mono max-w-md ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
-            Integrated technical skill set combining modern web programming, aesthetic user interface design, AI exploration, and digital growth.
+            A verified technical toolkit focused on building practical, accessible digital platforms, web systems, and AI-assisted workflows.
           </p>
         </div>
 
         {/* 4 Skill Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SKILLS_DATA.map((cat, idx) => {
-            const Icon = CATEGORY_ICONS[cat.category as keyof typeof CATEGORY_ICONS] || Code;
+            const Icon = CATEGORY_ICONS[cat.category] || Code;
 
             return (
               <motion.div
@@ -50,7 +50,7 @@ export default function SkillsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
                 className={`p-7 rounded-3xl border flex flex-col justify-between transition-all duration-300 shadow-sm ${
                   isDark
                     ? 'bg-[#15151C] border-[#242432] hover:border-[#353548]'
@@ -74,10 +74,10 @@ export default function SkillsSection() {
 
                   <ul className="space-y-3">
                     {cat.skills.map((skill) => (
-                      <li key={skill} className={`flex items-center gap-2.5 text-sm font-medium ${
+                      <li key={skill} className={`flex items-start gap-2.5 text-sm font-medium ${
                         isDark ? 'text-[#D0D0DA]' : 'text-[#333338]'
                       }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-emerald-400' : 'bg-[#18181B]'}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${isDark ? 'bg-emerald-400' : 'bg-[#18181B]'}`} />
                         <span>{skill}</span>
                       </li>
                     ))}
@@ -87,9 +87,9 @@ export default function SkillsSection() {
                 <div className={`mt-8 pt-4 border-t text-[10px] font-mono flex items-center justify-between ${
                   isDark ? 'border-[#242432] text-[#747482]' : 'border-[#E6E5DC] text-[#7E7E88]'
                 }`}>
-                  <span>DISCIPLINE 0{idx + 1}</span>
+                  <span>TRACK 0{idx + 1}</span>
                   <span className={`font-semibold ${isDark ? 'text-emerald-400' : 'text-[#18181B]'}`}>
-                    Active Practice
+                    Applied Skill
                   </span>
                 </div>
               </motion.div>

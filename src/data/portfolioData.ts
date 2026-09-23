@@ -3,144 +3,152 @@ import { ProjectItem, EducationItem, JourneyStep, SkillCategory, InterestItem } 
 export const PERSONAL_INFO = {
   name: "Muhammad Rizwan",
   title: "Founder • Educationist • Digital Architect",
-  roles: ["Founder", "Educationist", "Digital Architect", "Web Developer", "Digital Innovator"],
+  roles: [
+    "Founder",
+    "Digital Product Builder",
+    "Education Technology Creator",
+    "Digital Architect",
+    "Web Developer"
+  ],
+  headline: "Founder • Educationist • Digital Architect",
+  alternativePositioning: "Digital Product Builder | Founder | Education Technology Creator",
   location: "Mianwali, Pakistan",
   country: "Pakistan",
   motto: "Think Digital. Build Future.",
   secondaryMotto: "Learn • Create • Improve • Repeat",
-  phone: "+92 331 4220506",
+  shortIntro: "I'm Muhammad Rizwan, a founder and digital product builder focused on creating useful, accessible and modern digital experiences across education, web applications and technology.",
+  professionalBio: "Muhammad Rizwan is the Founder & Owner of Education Point and a digital creator focused on building practical technology-driven platforms. His work combines education, web development, digital product design and technology experimentation. He is particularly interested in turning ideas into usable digital products and creating technology that provides practical value to students and users.",
+  founderStatement: "I believe technology becomes meaningful when it solves real problems. My focus is on turning ideas into practical digital products that people can actually use.",
+  globalOpportunitiesStatement: "Open to relevant international opportunities and collaborations.",
+  openStatus: "Open to International Opportunities",
+  phone: "03314220506",
+  phoneInternational: "+92 331 4220506",
   whatsappUrl: "https://wa.me/923314220506",
+  email: "educationpoint0360@gmail.com",
+  websiteUrl: "https://educationpoint360.netlify.app/",
+  portfolioUrl: "https://rizwanep.netlify.app/",
+  instagramUrl: "https://www.instagram.com/educ.ationpointofficial/",
+  instagramHandle: "@educ.ationpointofficial",
+  whatsappChannelUrl: "https://whatsapp.com/channel/0029Vb7bYUSJUM2eWSlWfo36",
   personalInstagram: "https://www.instagram.com/itx.wani1",
   personalInstagramHandle: "@itx.wani1",
-  epInstagram: "https://www.instagram.com/educ.ationpointofficial/",
-  epInstagramHandle: "@educ.ationpointofficial",
-  facebookUrl: "https://www.facebook.com/share/1C3r1Jy8QH/",
   youtubeUrl: "https://youtube.com/@educationpoint998",
   youtubeHandle: "@educationpoint998",
-  epWhatsappChannel: "https://whatsapp.com/channel/0029Vb7bYUSJUM2eWSlWfo36",
-  epEmail: "educationpoint0360@gmail.com",
-  portfolioUrl: "https://rizwanep.netlify.app/",
-  heroSupportingText: "Technology enthusiast, educationist, web creator and digital innovator building meaningful digital experiences through web development, AI, education technology and creative digital products.",
-  aboutLargeStatement: "I don't just use technology. I build with it.",
-  aboutBios: [
-    "My name is Muhammad Rizwan. I am a technology enthusiast, educationist, web creator and digital innovator with a strong interest in building useful digital platforms and learning experiences.",
-    "I enjoy exploring technology, creating websites, experimenting with modern web interfaces, learning new digital skills and turning ideas into real projects.",
-    "I believe that technology should not only look modern but should also solve real problems and make information easier to access."
-  ],
-  areasOfInterest: [
-    "Web Development",
-    "UI/UX Design",
-    "Artificial Intelligence",
-    "Educational Technology",
-    "Digital Communities",
-    "Creative Digital Projects"
-  ],
-  personalityStatement: "QUIET. CREATIVE. CURIOUS.",
-  personalityDescription: "I prefer observing, learning and building rather than constantly talking about what I want to achieve. I enjoy working independently, exploring new ideas and turning concepts into something real.",
+  personalityDescription: "A self-directed digital builder motivated by creating useful platforms, practical systems, and empowering students through educational technology.",
   personalityTraits: [
-    "Curious",
-    "Creative",
-    "Independent",
-    "Technology-Oriented",
-    "Learner",
-    "Calm",
-    "Observant",
-    "Innovative",
-    "Consistent"
+    "Independent Builder",
+    "Product-Minded",
+    "Self-Directed Learner",
+    "Clean Execution",
+    "User-Centric",
+    "Empathetic Problem Solver",
+    "Consistent Experimenter",
+    "Detail-Oriented",
+    "Technology Enthusiast"
   ],
-  digitalPhilosophyQuote: "My goal is not simply to create websites, but to create useful digital experiences that people can actually use."
+  digitalPhilosophyQuote: "Technology is most impactful when it bridges knowledge gaps and makes real daily utility accessible to everyday users."
 };
 
-export const QUICK_PROFILE = [
-  { label: "NAME", value: "Muhammad Rizwan" },
-  { label: "ROLE", value: "Founder • Educationist • Digital Architect" },
-  { label: "LOCATION", value: "Mianwali, Pakistan" },
-  { label: "EDUCATION", value: "Matric (CS) • Intermediate (ICS)" },
-  { label: "MATRIC RESULT", value: "85%", highlight: true },
-  { label: "INTER RESULT", value: "70%", highlight: true },
-  { label: "FOCUS", value: "Technology • Education • Digital Innovation" }
-];
+export const QUICK_PROFILE = {
+  education: "Intermediate in Computer Science (ICS)",
+  secondary: "Matric (Computer Science) - 85%",
+  location: "Mianwali, Pakistan"
+};
 
-export const EDUCATION_DATA: EducationItem[] = [
+export const GLOBAL_CAREER_AREAS = [
   {
-    degree: "MATRIC",
-    field: "Computer Science",
-    percentage: 85,
-    period: "Secondary School Certificate",
-    description: "Built an early foundation in computers, technology and digital concepts."
+    title: "Digital Product Development",
+    desc: "Transforming user needs and real problems into structured, usable, end-to-end digital web products."
   },
   {
-    degree: "INTERMEDIATE",
-    field: "ICS (Intermediate in Computer Science)",
-    percentage: 70,
-    period: "Higher Secondary Certificate",
-    description: "Continued developing interest in computing, technology and digital problem-solving."
+    title: "Web Development",
+    desc: "Engineering responsive, performant, and cross-browser web interfaces with clean HTML, modern CSS, and JavaScript."
+  },
+  {
+    title: "Education Technology",
+    desc: "Designing academic repositories, student platforms, and digital resources that make learning accessible."
+  },
+  {
+    title: "Frontend Development",
+    desc: "Crafting fluid client-side experiences with high visual polish, semantic accessibility, and fast load times."
+  },
+  {
+    title: "UI/UX-Focused Web Experiences",
+    desc: "Structuring intuitive user journeys, clean layout hierarchies, micro-interactions, and refined typography."
+  },
+  {
+    title: "Digital Platforms",
+    desc: "Architecting multi-page portals, content delivery platforms, community spaces, and web utilities."
+  },
+  {
+    title: "AI-Powered Products",
+    desc: "Integrating intelligent API endpoints, prompt workflows, and AI assistants into practical user interfaces."
+  },
+  {
+    title: "Remote Collaboration",
+    desc: "Working asynchronously with international teams, remote employers, founders, and digital product squads."
+  },
+  {
+    title: "Startup Environments",
+    desc: "Building rapidly from idea to execution with an independent product builder mindset."
+  },
+  {
+    title: "Technology Projects",
+    desc: "Continuously exploring modern web frameworks, Progressive Web Apps (PWA), and emerging technology."
   }
 ];
 
-export const JOURNEY_STEPS: JourneyStep[] = [
+export const FOUNDER_TIMELINE = [
+  { step: "01", phase: "Idea", desc: "Identify real user friction or educational resource gap." },
+  { step: "02", phase: "Design", desc: "Structure clean UI architecture and intuitive information hierarchy." },
+  { step: "03", phase: "Build", desc: "Code responsive, fast, and accessible web experiences." },
+  { step: "04", phase: "Improve", desc: "Refine performance, user feedback, and functional reliability." },
+  { step: "05", phase: "Launch", desc: "Deploy publicly to empower students, users, and digital communities." }
+];
+
+export const FOUNDER_EXPERIENCE = [
   {
-    step: "01",
-    title: "CURIOSITY",
-    tagline: "The Spark of Discovery",
-    description: "Started exploring computers, websites and digital technology."
-  },
-  {
-    step: "02",
-    title: "SELF LEARNING",
-    tagline: "Independent Growth",
-    description: "Developed skills through experimentation, online learning and practical work."
-  },
-  {
-    step: "03",
-    title: "WEB CREATION",
-    tagline: "From Idea to Screen",
-    description: "Started building websites and experimenting with modern interfaces."
-  },
-  {
-    step: "04",
-    title: "EDUCATION POINT",
-    tagline: "Serving the Community",
-    description: "Created Education Point as a student-focused educational platform."
-  },
-  {
-    step: "05",
-    title: "DIGITAL PRODUCTS",
-    tagline: "Expanding Horizons",
-    description: "Expanded into AI, social platforms, Islamic technology and creative web projects."
-  },
-  {
-    step: "06",
-    title: "CONTINUOUS BUILDING",
-    tagline: "The Future in Motion",
-    description: "Continuing to learn, experiment and build new digital experiences."
+    role: "Founder & Owner",
+    organization: "Education Point",
+    period: "2024 – Present",
+    location: "Mianwali, Pakistan / Remote",
+    website: "https://educationpoint360.netlify.app/",
+    description: "Conceived, architected, and continuously develop Education Point as a student-focused educational platform created to make academic resources organized and accessible.",
+    focusAreas: [
+      "Product development & platform architecture",
+      "Educational platform management & curriculum structuring",
+      "Digital content organization (Notes, MCQs, Past Papers, Schemes)",
+      "Web platform development with responsive mobile-first performance",
+      "Feature planning & user journey optimization",
+      "Student-focused digital solutions and community engagement"
+    ]
   }
 ];
 
 export const EDUCATION_POINT_DETAILS = {
-  title: "EDUCATION POINT",
+  title: "Building Education Point",
   role: "Founder & Owner",
   tagline: "Learn • Prepare • Succeed",
-  description: "Education Point is a student-focused educational platform created to make academic resources easier to access.",
+  statement: "Education Point is a student-focused educational platform created to make useful academic resources more accessible and organized.",
   websiteUrl: "https://educationpoint360.netlify.app/",
   schemeUrl: "https://educationpoint360.netlify.app/scheme",
-  resources: [
+  coreAreas: [
+    "Matric",
+    "Intermediate",
+    "Entry Test Preparation",
     "Notes",
     "MCQs",
     "Past Papers",
-    "Guess Papers",
     "Pairing Schemes",
+    "Guess Papers",
     "Test Series",
-    "Entry Test Preparation",
-    "Student Resources",
-    "Educational Communities",
-    "Class 9th–12th Resources"
+    "Preparation Material"
   ],
   stats: [
-    { label: "Focus Classes", value: "9th - 12th" },
-    { label: "Core Categories", value: "10+ Resource Types" },
-    { label: "Community", value: "Student-Centered" },
-    { label: "Access Model", value: "Open & Free" }
+    { label: "Target Classes", value: "9th, 10th, 11th, 12th" },
+    { label: "Resource Types", value: "10 Core Academic Categories" },
+    { label: "Mission", value: "Equitable Student Access" },
+    { label: "Access Model", value: "Free & Open Digital Portal" }
   ]
 };
 
@@ -148,191 +156,275 @@ export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: "education-point",
     number: "01",
-    title: "EDUCATION POINT",
-    category: "Education Technology",
-    description: "Student-focused educational platform created to simplify access to high-yield academic study material, paper schemes, and test resources.",
+    title: "Education Point",
+    category: "Education Technology / EdTech",
+    description: "An education platform focused on providing students with structured academic resources, notes, preparation material, MCQs, past papers, pairing schemes, tests and other learning resources.",
     theme: "EdTech • Comprehensive Student Resources",
     url: "https://educationpoint360.netlify.app/",
-    buttonLabel: "Visit Project ↗",
-    tags: ["HTML5", "CSS3", "JavaScript", "EdTech", "Curriculum Resources"],
+    demoUrl: "https://educationpoint360.netlify.app/",
+    buttonLabel: "Visit Education Point →",
+    role: "Founder & Product Builder",
+    problem: "Pakistani secondary and higher secondary students (Matric & Intermediate) routinely suffer from fragmented study materials, outdated question papers, and inaccurate pairing schemes scattered across unverified blogs.",
+    concept: "A centralized, zero-clutter digital repository providing structured, up-to-date academic resources categorized strictly by grade, subject, and exam cycle.",
+    solution: "Engineered Education Point with direct access to Notes, MCQs, Past Papers, Guess Papers, Pairing Schemes, and Test Series with lightning-fast mobile loading.",
+    keyFeatures: [
+      "Structured grade-level categorization (9th–12th Classes)",
+      "Curated Punjab board pairing schemes and guess papers",
+      "Comprehensive test series & MCQ banks",
+      "Lightweight, mobile-responsive layout for quick exam revision"
+    ],
+    outcome: "Built from scratch into an active digital academic hub relied upon by students for exam preparation.",
+    tags: ["HTML5", "CSS3", "JavaScript", "EdTech", "Curriculum Architecture", "Responsive Web"],
     featured: true
   },
   {
     id: "ep-ai",
     number: "02",
-    title: "EP AI",
-    category: "Artificial Intelligence / Education",
-    description: "AI-focused educational assistant and digital learning project engineered to provide intelligent guidance and automated student support.",
+    title: "Education Point AI",
+    category: "AI / Education Technology",
+    description: "An AI-focused educational product designed to explore intelligent assistance and student-focused digital learning experiences.",
     theme: "AI Technology • Smart Tutoring Concept",
     url: "https://edupointai.netlify.app/",
-    buttonLabel: "Explore EP AI ↗",
-    tags: ["Artificial Intelligence", "Smart Assistant", "Web App", "EdTech"]
+    demoUrl: "https://edupointai.netlify.app/",
+    buttonLabel: "Explore Education Point AI →",
+    role: "Product Concept & AI Integration",
+    problem: "Students frequently need instant clarifications on academic topics outside classroom hours when private tutors are unavailable or unaffordable.",
+    concept: "An accessible AI-powered learning companion that provides structured explanations, concept breakdowns, and study guidance on demand.",
+    solution: "Developed an interactive web application connecting users to conversational AI models fine-tuned with student-centric prompt workflows.",
+    keyFeatures: [
+      "Instant academic explanation interface",
+      "Interactive concept summaries and Q&A",
+      "Minimalist, zero-distraction chat view",
+      "Optimized for mobile-first student access"
+    ],
+    outcome: "Successfully launched digital prototype demonstrating how modern AI APIs can provide real utility in everyday student learning.",
+    tags: ["AI Web App", "AI API Integration", "EdTech", "Prompt Engineering", "JavaScript"],
+    featured: true
   },
   {
     id: "ep-courses",
     number: "03",
-    title: "EDUCATION POINT COURSES",
-    category: "EdTech / Courses",
-    description: "Digital learning platform focused on structured courses, practical knowledge modules, and modern skill development for ambitious students.",
-    theme: "Courseware • Skill Acquisition",
+    title: "Education Point Courses",
+    category: "Education / Online Learning",
+    description: "A digital learning platform focused on structured courses, practical knowledge modules, and digital skill development.",
+    theme: "Courseware • Modular Skill Acquisition",
     url: "https://epcourse.netlify.app/",
-    buttonLabel: "View Courses ↗",
-    tags: ["Course Platform", "E-Learning", "Digital Skills", "Modular UI"]
+    demoUrl: "https://epcourse.netlify.app/",
+    buttonLabel: "View Courses →",
+    role: "Product Architect & Web Developer",
+    problem: "Ambitious students often lack free, accessible avenues to learn practical digital skills and foundational technologies alongside traditional school curricula.",
+    concept: "A clean, modular course repository structured into intuitive learning tracks, topic outlines, and clear lesson roadmaps.",
+    solution: "Designed and built an e-learning catalog focusing on clear typography, structured lesson cards, and frictionless course navigation.",
+    keyFeatures: [
+      "Modular course catalog with clear lesson hierarchy",
+      "Self-paced learning guides and practical topic outlines",
+      "Readable typography designed for long study sessions",
+      "Zero paywalls or complex sign-up hurdles"
+    ],
+    outcome: "Expanded Education Point's digital ecosystem from test prep into progressive skill development.",
+    tags: ["Online Learning", "Course Directory", "Modular UI", "Responsive Web"],
+    featured: true
   },
   {
     id: "soulbook",
     number: "04",
-    title: "SOULBOOK",
-    category: "Social Technology",
-    description: "Modern social platform concept featuring user profiles, dynamic posts, interactive reactions, comments, followers, following, and notifications.",
-    theme: "Social Network Architecture • User Interaction",
+    title: "SoulBook",
+    category: "Social / Digital Platform",
+    description: "A social-platform concept focused on creating a modern digital space for user interaction and content sharing.",
+    theme: "Social Platform Architecture • User Interaction",
     url: "https://soulbook.netlify.app/",
-    buttonLabel: "Explore SoulBook ↗",
-    tags: ["Social Engine", "Interactive Feed", "Notifications", "Profiles"]
+    demoUrl: "https://soulbook.netlify.app/",
+    buttonLabel: "Explore SoulBook →",
+    role: "Concept Creator & Frontend Architect",
+    problem: "Mainstream social platforms have become cluttered with advertising, complex tracking algorithms, and noisy interfaces that detract from personal sharing.",
+    concept: "A refined social platform prototype showcasing essential social mechanics—profiles, interactive feeds, reactions, comments, and notifications—in a clean visual framework.",
+    solution: "Built a reactive frontend application implementing client-side state for post creation, feed rendering, user following, and notification events.",
+    keyFeatures: [
+      "User profile management and biography cards",
+      "Interactive feed with post authoring and media embeds",
+      "Dynamic like reactions and nested commentary",
+      "Follower / following relationships and notification feed"
+    ],
+    outcome: "Created a comprehensive social product prototype validating UI architecture and user state management.",
+    tags: ["Social Engine", "Interactive State", "User Feeds", "JavaScript", "CSS Architecture"],
+    featured: true
   },
   {
     id: "nur-islamic",
     number: "05",
-    title: "NUR ISLAMIC",
-    category: "Islamic Technology",
-    description: "Islamic digital platform focused on Holy Quran, Authentic Hadith, prayer timings, daily Adhkar, digital Tasbeeh counter, and sacred resources.",
-    theme: "Islamic Technology • Spiritual Utility",
+    title: "NUR Islamic",
+    category: "Islamic Technology / PWA",
+    description: "A digital Islamic platform bringing together Quran, Hadith, prayer-related tools, adhkar and other faith-oriented resources in a modern web experience.",
+    theme: "Islamic Technology • Spiritual Utility & PWA",
     url: "https://nurislamic.netlify.app/",
-    buttonLabel: "Visit NUR Islamic ↗",
-    tags: ["Quran & Hadith", "Tasbeeh", "Prayer Times", "Sacred Tech"]
-  },
-  {
-    id: "personal-portfolio",
-    number: "06",
-    title: "PERSONAL PORTFOLIO",
-    category: "Digital Identity",
-    description: "Personal digital identity and creative portfolio showcasing founder initiatives, technical capability, and educational architecture.",
-    theme: "Editorial Minimalism • 2026 Web Experience",
-    url: "https://rizwanep.netlify.app/",
-    buttonLabel: "Current Identity ↗",
-    tags: ["Minimalist Editorial", "Responsive Architecture", "3D Interactive"]
+    demoUrl: "https://nurislamic.netlify.app/",
+    buttonLabel: "Visit NUR Islamic →",
+    role: "Sole Architect, Designer & Developer",
+    problem: "Many online Islamic tools are burdened with pop-up ads, clunky navigation, or require bulky app store downloads that consume device storage.",
+    concept: "A serene, respectful, ad-free Progressive Web App combining verified Islamic scripture, prayer tools, and daily remembrances in one fast interface.",
+    solution: "Engineered a Progressive Web App (PWA) with installable home-screen support, offline service workers, Holy Quran recitations, Authentic Hadith collections, and a responsive digital Tasbeeh counter.",
+    keyFeatures: [
+      "Holy Quran text reading and audio recitations",
+      "Authentic Hadith collections organized by topic",
+      "Accurate prayer time indicators and Qibla utility",
+      "Digital Tasbeeh counter with haptic feedback support",
+      "Daily morning & evening Adhkar supplications"
+    ],
+    outcome: "Delivered a lightweight, ad-free PWA providing daily spiritual utility to users across mobile and desktop devices.",
+    tags: ["Progressive Web App (PWA)", "Quran & Hadith", "Digital Tasbeeh", "Offline PWA", "Faith Tech"],
+    featured: true
   }
 ];
 
 export const SKILLS_DATA: SkillCategory[] = [
   {
-    category: "WEB DEVELOPMENT",
+    category: "Digital Product Development",
+    skills: [
+      "Product Concept Development",
+      "Web Platform Development",
+      "Digital Project Architecture",
+      "Feature Planning",
+      "User-focused Product Design"
+    ]
+  },
+  {
+    category: "Web Technologies",
     skills: [
       "HTML",
       "CSS",
       "JavaScript",
       "Responsive Web Design",
-      "PWA Concepts"
+      "Progressive Web Apps",
+      "API Integration"
     ]
   },
   {
-    category: "UI/UX & DESIGN",
+    category: "Platforms & Tools",
     skills: [
-      "UI/UX Concepts",
-      "Digital Design",
-      "Modern Interfaces",
-      "Website Animation",
-      "Creative Direction"
+      "Supabase",
+      "GitHub",
+      "Netlify",
+      "Google Drive integrations",
+      "REST APIs",
+      "OpenRouter / AI APIs"
     ]
   },
   {
-    category: "TECHNOLOGY",
+    category: "AI & Emerging Technology",
     skills: [
-      "Artificial Intelligence",
-      "Educational Technology",
-      "Digital Products",
-      "Web Technologies"
+      "AI-powered web applications",
+      "AI API integration",
+      "AI product experimentation",
+      "Prompt engineering",
+      "AI-assisted product development"
     ]
+  }
+];
+
+export const EDUCATION_DATA: EducationItem[] = [
+  {
+    degree: "Intermediate in Computer Science (ICS)",
+    field: "Computer Science, Mathematics & Physics Fundamentals",
+    percentage: 70,
+    period: "Higher Secondary Certificate",
+    description: "Focused on core computing logic, algorithmic thinking, mathematics, physics, and digital problem solving."
   },
   {
-    category: "DIGITAL",
-    skills: [
-      "Digital Branding",
-      "Social Media",
-      "Community Building",
-      "Content Presentation",
-      "Basic Digital Marketing",
-      "SMM"
-    ]
+    degree: "Secondary School Certificate (Matric)",
+    field: "Computer Science Foundation",
+    percentage: 85,
+    period: "Secondary School Certificate",
+    description: "Built an early academic foundation in computers, information technology, mathematics, and programming logic."
+  }
+];
+
+export const LANGUAGES_DATA = [
+  { language: "English", level: "Professional Working Proficiency" },
+  { language: "Urdu", level: "Native / Bilingual" }
+];
+
+export const CERTIFICATIONS_NOTE = "Certifications will be added as verified credentials become available.";
+
+export const JOURNEY_STEPS: JourneyStep[] = [
+  {
+    step: "01",
+    title: "CURIOSITY",
+    tagline: "The Spark of Discovery",
+    description: "Started exploring computers, websites, and the fundamentals of digital technology."
+  },
+  {
+    step: "02",
+    title: "SELF LEARNING",
+    tagline: "Independent Growth",
+    description: "Developed web development and design skills through self-directed research, coding, and continuous experimentation."
+  },
+  {
+    step: "03",
+    title: "WEB CREATION",
+    tagline: "From Idea to Screen",
+    description: "Began building real web pages, exploring frontend interfaces, and understanding user accessibility."
+  },
+  {
+    step: "04",
+    title: "EDUCATION POINT",
+    tagline: "Serving the Student Community",
+    description: "Founded Education Point to organize academic materials and solve real study access problems for students."
+  },
+  {
+    step: "05",
+    title: "DIGITAL PRODUCTS",
+    tagline: "Expanding Horizons",
+    description: "Expanded into AI tutoring experiments, social platform architecture, e-learning courses, and faith-based PWAs."
+  },
+  {
+    step: "06",
+    title: "CONTINUOUS BUILDING",
+    tagline: "The Future in Motion",
+    description: "Continuously refining technical capability, learning modern web standards, and building practical digital products."
   }
 ];
 
 export const INTERESTS_DATA: InterestItem[] = [
   {
     id: "tech",
-    title: "TECHNOLOGY",
-    category: "Core Passion",
-    description: "Computers, modern technology, software and digital innovation.",
+    title: "Digital Product Architecture",
+    category: "Core Discipline",
+    description: "Architecting end-to-end digital experiences from initial problem discovery to public deployment.",
     iconName: "Cpu"
   },
   {
     id: "web-dev",
-    title: "WEB DEVELOPMENT",
-    category: "Creation",
-    description: "Creating websites and experimenting with modern interfaces.",
+    title: "Modern Web Engineering",
+    category: "Engineering",
+    description: "Creating responsive, fast, and accessible web experiences with clean code and modern standards.",
     iconName: "Code2"
   },
   {
     id: "ai",
-    title: "ARTIFICIAL INTELLIGENCE",
-    category: "Future Tech",
-    description: "Exploring AI tools, AI assistants and AI-powered digital experiences.",
+    title: "Artificial Intelligence",
+    category: "Emerging Tech",
+    description: "Exploring AI APIs, prompt workflows, and practical automated assistance for education and productivity.",
     iconName: "Sparkles"
   },
   {
-    id: "books",
-    title: "BOOK READING",
-    category: "Intellect",
-    description: "Reading books and exploring new ideas and perspectives.",
-    iconName: "BookOpen"
-  },
-  {
-    id: "gaming",
-    title: "COMPUTER GAMING",
-    category: "Interactive",
-    description: "Computer gaming, interactive experiences and game technology.",
-    iconName: "Gamepad2"
-  },
-  {
-    id: "series",
-    title: "WEB SERIES",
-    category: "Storytelling",
-    description: "Watching different types and genres of web series.",
-    iconName: "Film"
+    id: "edtech",
+    title: "Education Technology",
+    category: "Social Impact",
+    description: "Combining web technology with academic curation to make quality study materials accessible to every student.",
+    iconName: "GraduationCap"
   },
   {
     id: "design",
-    title: "DIGITAL DESIGN",
+    title: "UI/UX & Visual Architecture",
     category: "Aesthetics",
-    description: "Modern interfaces, animation, visual concepts and creative digital experiences.",
+    description: "Crafting clean layouts, intuitive typography, micro-interactions, and uncluttered design hierarchies.",
     iconName: "Palette"
   },
   {
-    id: "cinematic",
-    title: "CINEMATIC VISUALS",
-    category: "Visual Arts",
-    description: "Photography concepts, cinematic aesthetics, visual storytelling and 3D experiments.",
-    iconName: "Camera"
-  },
-  {
-    id: "anime",
-    title: "ANIME / CREATIVE VISUALS",
-    category: "Creative Expression",
-    description: "Interest in anime-inspired aesthetics and creative visual experimentation.",
-    iconName: "Wand2"
-  },
-  {
     id: "communities",
-    title: "DIGITAL COMMUNITIES",
-    category: "People & Network",
-    description: "Social platforms, online communities and digital communication.",
+    title: "Digital Communities",
+    category: "Engagement",
+    description: "Fostering engaged student channels, peer knowledge sharing, and online collaborative spaces.",
     iconName: "Users"
-  },
-  {
-    id: "edtech",
-    title: "EDUCATION TECHNOLOGY",
-    category: "Mission",
-    description: "Combining technology with education to make learning more accessible.",
-    iconName: "GraduationCap"
   }
 ];

@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, ArrowDown, MapPin, Sparkles, Clock } from 'lucide-react';
+import { ArrowRight, ArrowDown, MapPin, Sparkles, Clock, Compass, ShieldCheck } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import Hero3DVisual from './Hero3DVisual';
 import { soundFX } from '../utils/audio';
 import { useTheme } from '../context/ThemeContext';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onOpenCvModal?: () => void;
+}
+
+export default function HeroSection({ onOpenCvModal }: HeroSectionProps) {
   const [currentTime, setCurrentTime] = useState<string>('');
   const { isDark } = useTheme();
 
   useEffect(() => {
     const updateTime = () => {
-      // Pakistan Standard Time (UTC+5)
       try {
         const timeStr = new Intl.DateTimeFormat('en-US', {
           timeZone: 'Asia/Karachi',
           hour: '2-digit',
           minute: '2-digit',
-          second: '2-digit',
           hour12: true,
         }).format(new Date());
         setCurrentTime(timeStr);
@@ -42,78 +44,92 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className={`relative min-h-[92vh] pt-32 pb-20 sm:pt-36 sm:pb-28 flex items-center overflow-hidden border-b transition-colors duration-300 ${
+      className={`min-h-[92vh] flex items-center justify-center relative pt-28 pb-20 overflow-hidden border-b transition-colors duration-300 ${
         isDark ? 'border-[#242432]' : 'border-[#E6E5DC]/80'
       }`}
     >
-      {/* Background subtle noise and fine grid lines */}
-      <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none" />
+      {/* Background Subtle Gradient Lighting */}
+      <div
+        className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] pointer-events-none ${
+          isDark
+            ? 'bg-emerald-500/10'
+            : 'bg-emerald-500/5'
+        }`}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Text & Editorial Content (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Small Label Pill */}
+          {/* Left Column: Core Positioning & Brand Statements (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            {/* Live Availability Status */}
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-[11px] sm:text-xs font-mono font-medium tracking-wider uppercase mb-6 transition-colors ${
-                isDark
-                  ? 'bg-[#15151C] border-[#353548] text-[#F4F4F6]'
-                  : 'bg-[#EFEFE8] border-[#D4D3C7]/70 text-[#18181B]'
-              }`}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-2 mb-6"
             >
-              <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${isDark ? 'bg-emerald-400' : 'bg-[#18181B]'}`} />
-              <span>FOUNDER • EDUCATIONIST • DIGITAL ARCHITECT</span>
+              <div className="flex items-center gap-2 text-xs font-mono">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                <span className={`font-semibold tracking-wide ${isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
+                  Available for Remote Work & Digital Product Roles
+                </span>
+                <span className="opacity-40">·</span>
+                <span className={`opacity-70 ${isDark ? 'text-[#A6A6B4]' : 'text-[#7E7E88]'}`}>
+                  Global Ready
+                </span>
+              </div>
             </motion.div>
 
-            {/* Main Heading: Editorial & Monumental */}
+            {/* Founder & Builder Name Title */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-4"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-2 mb-4"
             >
-              <h1 className={`text-5xl sm:text-7xl md:text-8xl font-serif font-normal tracking-tight leading-[0.95] ${
+              <h1 className={`text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight leading-[1.05] ${
                 isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
               }`}>
-                MUHAMMAD
-                <span className={`block font-serif italic text-4xl sm:text-6xl md:text-7xl mt-1 sm:mt-2 ${
-                  isDark ? 'text-[#A6A6B4]' : 'text-[#3A3A40]'
-                }`}>
-                  RIZWAN
-                </span>
+                MUHAMMAD RIZWAN
               </h1>
+
+              {/* Sub-headline: Professional Position */}
+              <div className="pt-1 flex flex-wrap items-center gap-2 text-xs sm:text-sm font-mono tracking-wider uppercase text-emerald-600 dark:text-emerald-400 font-semibold">
+                <span>Founder</span>
+                <span>•</span>
+                <span>Educationist</span>
+                <span>•</span>
+                <span>Digital Architect</span>
+              </div>
             </motion.div>
 
-            {/* Main Statement */}
+            {/* Personal Brand Statement Motto */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-2 mb-6"
+              className="mb-6"
             >
-              <p className={`text-2xl sm:text-3xl font-sans font-semibold tracking-tight ${
-                isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
+              <p className={`text-2xl sm:text-3xl md:text-4xl font-serif italic tracking-tight font-medium ${
+                isDark ? 'text-[#EAEAEF]' : 'text-[#27272A]'
               }`}>
-                Think Digital. <span className={isDark ? 'text-[#747482]' : 'text-[#57575E]'}>Build Future.</span>
+                Think Digital. <span className={isDark ? 'text-emerald-400' : 'text-emerald-600'}>Build Future.</span>
               </p>
             </motion.div>
 
-            {/* Supporting Text */}
+            {/* Short Introduction */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className={`text-base sm:text-lg leading-relaxed max-w-xl font-normal mb-8 ${
-                isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'
+              className={`text-base sm:text-lg leading-relaxed max-w-xl font-normal mb-7 ${
+                isDark ? 'text-[#D0D0DA]' : 'text-[#3F3F46]'
               }`}
             >
-              «{PERSONAL_INFO.heroSupportingText}»
+              “{PERSONAL_INFO.shortIntro}”
             </motion.p>
 
-            {/* Location & Status Bar */}
+            {/* Location & Real-Time Context Bar */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -129,54 +145,69 @@ export default function HeroSection() {
               <div className={`hidden sm:block ${isDark ? 'text-[#353548]' : 'text-[#D4D3C7]'}`}>•</div>
               <div className="flex items-center gap-1.5">
                 <Clock className={`w-3.5 h-3.5 ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`} />
-                <span>PKT: {currentTime || '5:00 PM'}</span>
+                <span>PKT: {currentTime || 'Pakistan'}</span>
               </div>
               <div className={`hidden sm:block ${isDark ? 'text-[#353548]' : 'text-[#D4D3C7]'}`}>•</div>
               <div className="flex items-center gap-1.5">
                 <Sparkles className={`w-3 h-3 ${isDark ? 'text-amber-400' : 'text-[#18181B]'}`} />
-                <span className={isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}>Ready to Build</span>
+                <span className={isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'}>Founder: Education Point</span>
               </div>
             </motion.div>
 
-            {/* Action Buttons */}
+            {/* Primary Action Buttons (Clean 2026, no download CV spam) */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-wrap items-center gap-3 sm:gap-4 mb-5"
             >
+              {/* Primary: View Projects */}
               <button
-                id="hero-explore-projects"
+                id="hero-explore-work-btn"
                 onClick={() => scrollToSection('projects')}
-                className={`group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-sm active:scale-95 ${
+                className={`group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 active:scale-95 shadow-md ${
                   isDark
                     ? 'bg-[#F4F4F6] text-[#0C0C0F] hover:bg-[#E2E2E6]'
                     : 'bg-[#18181B] text-[#F9F9F6] hover:bg-[#333338]'
                 }`}
               >
-                <span>Explore Projects</span>
+                <span>Explore Work</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
+              {/* Secondary: Start a Conversation */}
               <button
-                id="hero-about-me"
-                onClick={() => scrollToSection('about')}
-                className={`group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full border text-sm font-medium tracking-wide transition-all duration-200 shadow-sm active:scale-95 ${
+                id="hero-contact-btn"
+                onClick={() => scrollToSection('contact')}
+                className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-full border text-sm font-semibold tracking-wide transition-all duration-200 active:scale-95 ${
                   isDark
                     ? 'bg-[#15151C] border-[#353548] text-[#F4F4F6] hover:bg-[#1D1D26]'
                     : 'bg-[#FFFFFF] border-[#D4D3C7] text-[#18181B] hover:bg-[#EFEFE8]'
                 }`}
               >
-                <span>About Me</span>
-                <ArrowDown className={`w-4 h-4 transition-transform duration-300 group-hover:translate-y-1 ${
-                  isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'
-                }`} />
+                <span>Start a Conversation</span>
+              </button>
+            </motion.div>
+
+            {/* Subtle, elegant anchor to Curriculum Vitae section */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="pt-2"
+            >
+              <button
+                onClick={() => scrollToSection('cv')}
+                className="inline-flex items-center gap-1.5 text-xs font-mono opacity-70 hover:opacity-100 hover:text-emerald-500 transition-all group"
+              >
+                <span>View Official Curriculum Vitae & Credentials</span>
+                <ArrowDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-y-0.5" />
               </button>
             </motion.div>
           </div>
 
-          {/* Right Column: 3D Visual Experience (5 cols) */}
-          <div className="lg:col-span-5 flex items-center justify-center pt-8 lg:pt-0">
+          {/* Right Column: 3D Visual Stage with Three.js & Holographic Tilt (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center">
             <Hero3DVisual />
           </div>
         </div>
