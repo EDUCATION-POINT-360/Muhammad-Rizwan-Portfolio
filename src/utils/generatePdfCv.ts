@@ -1,5 +1,3 @@
-import { jsPDF } from 'jspdf';
-
 export function downloadCvPdf() {
   try {
     // Primary method: trigger direct download of the pre-compiled clean vector ATS PDF
@@ -12,11 +10,12 @@ export function downloadCvPdf() {
     document.body.removeChild(link);
   } catch (err) {
     console.error('Static PDF download failed, falling back to dynamic generator:', err);
-    generateAndDownloadDynamicPdf();
+    generateAndDownloadDynamicPdf().catch(console.error);
   }
 }
 
-export function generateAndDownloadDynamicPdf() {
+export async function generateAndDownloadDynamicPdf() {
+  const { jsPDF } = await import('jspdf');
   const doc = new jsPDF({
     unit: 'pt',
     format: 'a4',

@@ -30,7 +30,7 @@ export default function EducationPointShowcase() {
         {/* Section Pill */}
         <div className="flex items-center gap-2 mb-4">
           <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
-            04 // FLAGSHIP EDTECH PLATFORM
+            04. Flagship EdTech Platform
           </span>
           <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
         </div>
@@ -134,25 +134,29 @@ export default function EducationPointShowcase() {
         {/* 4 Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {EDUCATION_POINT_DETAILS.stats.map((stat, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className={`p-6 rounded-3xl border transition-all duration-200 ${
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+              onMouseEnter={() => soundFX.playTick()}
+              className={`p-6 rounded-3xl border transition-all duration-300 relative overflow-hidden group ${
                 isDark
-                  ? 'bg-[#14141B] border-[#242432]'
-                  : 'bg-[#FAFAF7] border-[#E8E7DF]'
+                  ? 'bg-[#14141B] border-[#242432] hover:border-emerald-500/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.5)]'
+                  : 'bg-[#FAFAF7] border-[#E8E7DF] hover:border-emerald-500/50 hover:shadow-[0_12px_32px_rgba(24,24,27,0.06)]'
               }`}
             >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/15 transition-all duration-300 pointer-events-none" />
               <div className={`text-[10px] font-mono tracking-widest uppercase mb-2 ${
                 isDark ? 'text-[#747482]' : 'text-[#7E7E88]'
               }`}>
                 {stat.label}
               </div>
-              <div className={`text-xl font-serif font-bold tracking-tight ${
+              <div className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${
                 isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
               }`}>
                 {stat.value}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -37,11 +37,6 @@ export default function CvDocumentViewer({ onOpenModal, isModalView = false }: C
     downloadCvPdf();
   };
 
-  const handleOpenPdfNewTab = () => {
-    soundFX.playTick();
-    window.open('/cv/Muhammad-Rizwan-CV.pdf', '_blank');
-  };
-
   const handlePrint = () => {
     soundFX.playTick();
     window.print();
@@ -164,8 +159,11 @@ export default function CvDocumentViewer({ onOpenModal, isModalView = false }: C
             </button>
           )}
 
-          <button
-            onClick={handleOpenPdfNewTab}
+          <a
+            href="/cv/Muhammad-Rizwan-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundFX.playTick()}
             className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-mono font-medium transition-colors ${
               isDark ? 'border-[#353548] text-[#D0D0DA] hover:bg-[#1D1D28]' : 'border-[#D4D3C7] text-[#333338] hover:bg-[#F2F2EC]'
             }`}
@@ -173,7 +171,7 @@ export default function CvDocumentViewer({ onOpenModal, isModalView = false }: C
           >
             <ExternalLink className="w-3.5 h-3.5" />
             <span>Open PDF</span>
-          </button>
+          </a>
 
           <button
             onClick={handleDownload}
@@ -211,10 +209,10 @@ export default function CvDocumentViewer({ onOpenModal, isModalView = false }: C
           /* High-Definition Physical Document Picture (Pic) View */
           <div
             style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
-            className="transition-transform duration-200"
+            className="transition-transform duration-200 max-w-full"
           >
             <div
-              className={`w-[780px] min-h-[1100px] p-12 sm:p-14 rounded-xl border shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] relative select-text transition-colors ${
+              className={`w-[780px] max-w-full min-h-[1050px] p-6 sm:p-10 md:p-14 rounded-2xl border shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] relative select-text transition-colors ${
                 isDark ? 'bg-[#181820] text-[#EAEAEF] border-[#2C2C3E]' : 'bg-[#FFFFFF] text-[#18181B] border-[#D4D3C7]'
               }`}
             >

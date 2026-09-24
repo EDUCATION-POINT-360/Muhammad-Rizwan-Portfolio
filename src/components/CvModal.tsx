@@ -37,11 +37,6 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
     downloadCvPdf();
   };
 
-  const handleOpenPdf = () => {
-    soundFX.playTick();
-    window.open('/cv/Muhammad-Rizwan-CV.pdf', '_blank');
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -81,8 +76,11 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
               </div>
 
               <div className="flex items-center gap-2">
-                <button
-                  onClick={handleOpenPdf}
+                <a
+                  href="/cv/Muhammad-Rizwan-CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundFX.playTick()}
                   className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-mono font-medium transition-colors ${
                     isDark ? 'border-[#353548] text-[#D0D0DA] hover:bg-[#1D1D28]' : 'border-[#D4D3C7] text-[#333338] hover:bg-[#F2F2EC]'
                   }`}
@@ -90,7 +88,7 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>Open PDF</span>
-                </button>
+                </a>
 
                 <button
                   onClick={handleDownload}

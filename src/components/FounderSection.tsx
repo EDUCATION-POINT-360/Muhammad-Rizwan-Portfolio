@@ -19,7 +19,7 @@ export default function FounderSection() {
         {/* Section Tag */}
         <div className="flex items-center gap-2 mb-4">
           <span className={`text-xs font-mono tracking-widest uppercase ${isDark ? 'text-[#747482]' : 'text-[#7E7E88]'}`}>
-            05 // FOUNDER METHODOLOGY & EXPERIENCE
+            05. Founder Methodology & Experience
           </span>
           <div className={`w-12 h-[1px] ${isDark ? 'bg-[#353548]' : 'bg-[#D4D3C7]'}`} />
         </div>

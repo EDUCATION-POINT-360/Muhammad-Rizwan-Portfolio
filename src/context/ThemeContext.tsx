@@ -3,6 +3,40 @@ import { soundFX } from '../utils/audio';
 
 type Theme = 'light' | 'dark';
 
+function getSafeStorage(key: string): string | null {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem(key);
+    }
+  } catch {
+    // Restricted iframe or disabled cookies
+  }
+  return null;
+}
+
+function setSafeStorage(key: string, value: string): void {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem(key, value);
+    }
+  } catch {
+    // Ignore storage failure in sandboxed iframe
+  }
+}
+
+function getInitialTheme(): Theme {
+  try {
+    const saved = getSafeStorage('mr_portfolio_theme') as Theme | null;
+    if (saved === 'dark' || saved === 'light') return saved;
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+  } catch {
+    // Fallback
+  }
+  return 'dark';
+}
+
 interface ThemeContextType {
   theme: Theme;
   isDark: boolean;
@@ -13,23 +47,20 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('mr_portfolio_theme') as Theme | null;
-      if (saved === 'dark' || saved === 'light') return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return 'light';
-  });
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
+    try {
+      const root = document.documentElement;
+      if (theme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    } catch {
+      // ignore DOM error
     }
-    localStorage.setItem('mr_portfolio_theme', theme);
+    setSafeStorage('mr_portfolio_theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

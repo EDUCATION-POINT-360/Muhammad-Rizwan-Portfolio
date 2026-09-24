@@ -123,7 +123,7 @@ export default function ProjectPreviewModal({ project, onClose }: ProjectPreview
                 }`}>
                   <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-500">
                     <Target className="w-3.5 h-3.5" />
-                    <span>01 // THE PROBLEM</span>
+                    <span>01. The Problem</span>
                   </div>
                   <p className={`text-xs leading-relaxed ${isDark ? 'text-[#D0D0DA]' : 'text-[#505058]'}`}>
                     {project.problem}
@@ -137,7 +137,7 @@ export default function ProjectPreviewModal({ project, onClose }: ProjectPreview
                 }`}>
                   <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-sky-500">
                     <Lightbulb className="w-3.5 h-3.5" />
-                    <span>02 // THE CONCEPT</span>
+                    <span>02. The Concept</span>
                   </div>
                   <p className={`text-xs leading-relaxed ${isDark ? 'text-[#D0D0DA]' : 'text-[#505058]'}`}>
                     {project.concept}
@@ -154,7 +154,7 @@ export default function ProjectPreviewModal({ project, onClose }: ProjectPreview
                 }`}>
                   <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-500">
                     <CheckCheck className="w-3.5 h-3.5" />
-                    <span>03 // THE SOLUTION</span>
+                    <span>03. The Architecture & Solution</span>
                   </div>
                   <p className={`text-xs leading-relaxed ${isDark ? 'text-[#D0D0DA]' : 'text-[#505058]'}`}>
                     {project.solution}
@@ -168,7 +168,7 @@ export default function ProjectPreviewModal({ project, onClose }: ProjectPreview
                 }`}>
                   <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-purple-400">
                     <UserCheck className="w-3.5 h-3.5" />
-                    <span>04 // MY ROLE & RESPONSIBILITIES</span>
+                    <span>04. Role & Contributions</span>
                   </div>
                   <p className={`text-xs leading-relaxed ${isDark ? 'text-[#D0D0DA]' : 'text-[#505058]'}`}>
                     {project.role}
