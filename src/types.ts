@@ -54,3 +54,14 @@ export interface SocialLink {
   iconName: string;
   type: 'personal' | 'educationPoint';
 }
+
+export interface ProjectDirectoryEntry {
+  name: string;
+  description: string;
+  category: string;
+  liveUrl: string;
+  creator: string;
+  technology: string;
+  status: string;
+  association: string;
+}

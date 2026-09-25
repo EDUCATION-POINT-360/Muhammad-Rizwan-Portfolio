@@ -10,6 +10,7 @@ import AboutSection from './components/AboutSection';
 import GlobalCareerSection from './components/GlobalCareerSection';
 import ProjectsSection from './components/ProjectsSection';
 import EducationPointShowcase from './components/EducationPointShowcase';
+import ProjectDirectory from './components/ProjectDirectory';
 import FounderSection from './components/FounderSection';
 import SkillsSection from './components/SkillsSection';
 import EducationSection from './components/EducationSection';
@@ -36,6 +37,7 @@ function PortfolioMain() {
       'international-career',
       'projects',
       'education-point',
+      'project-directory',
       'founder',
       'skills',
       'education',
@@ -108,7 +110,10 @@ function PortfolioMain() {
         {/* 05. Standout Founder Story: Building Education Point Flagship */}
         <EducationPointShowcase />
 
-        {/* 06. Founder & Builder Methodology & Experience */}
+        {/* 06. Verified Semantic Project Directory & Ecosystem Provenance */}
+        <ProjectDirectory />
+
+        {/* 07. Founder & Builder Methodology & Experience */}
         <FounderSection />
 
         {/* 07. Core Skills & Verified Tooling */}

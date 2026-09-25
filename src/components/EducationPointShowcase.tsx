@@ -36,16 +36,16 @@ export default function EducationPointShowcase() {
         </div>
 
         {/* Main Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
           <div className="lg:col-span-8">
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono mb-3 border ${
+            <div className={`inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-mono mb-4 border ${
               isDark
                 ? 'bg-[#15151C] text-[#F4F4F6] border-[#353548]'
                 : 'bg-[#EFEFE8] text-[#18181B] border-[#D4D3C7]/60'
             }`}>
               <span className="font-semibold text-emerald-500">{EDUCATION_POINT_DETAILS.role}</span>
               <span>•</span>
-              <span>{EDUCATION_POINT_DETAILS.tagline}</span>
+              <span className="italic">{EDUCATION_POINT_DETAILS.brandPhrases[0]}</span>
             </div>
             <h2 className={`text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight leading-[0.98] ${
               isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
@@ -57,6 +57,16 @@ export default function EducationPointShowcase() {
             }`}>
               “{EDUCATION_POINT_DETAILS.statement}”
             </p>
+
+            {/* Brand Motifs */}
+            <div className="flex flex-wrap items-center gap-3 mt-4 text-xs font-mono text-emerald-500">
+              {EDUCATION_POINT_DETAILS.brandPhrases.map((phrase, pIdx) => (
+                <span key={pIdx} className="inline-flex items-center gap-1.5 opacity-90">
+                  <span>“{phrase}”</span>
+                  {pIdx < EDUCATION_POINT_DETAILS.brandPhrases.length - 1 && <span className="opacity-30">•</span>}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Prominent CTA Buttons */}
@@ -90,6 +100,28 @@ export default function EducationPointShowcase() {
               <span>Browse Pairing Schemes</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
+          </div>
+        </div>
+
+        {/* Target Audience Bar */}
+        <div className="mb-12">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-emerald-500 font-bold mb-3">
+            TARGET AUDIENCE & STUDENT COMMUNITIES
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs font-mono">
+            {EDUCATION_POINT_DETAILS.targetAudience.map((audience, aIdx) => (
+              <span
+                key={aIdx}
+                className={`px-3 py-1.5 rounded-xl border flex items-center gap-2 ${
+                  isDark
+                    ? 'bg-[#15151C] border-[#252535] text-[#D0D0DA]'
+                    : 'bg-[#FFFFFF] border-[#E2E2D6] text-[#2D2D34]'
+                }`}
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                <span>{audience}</span>
+              </span>
+            ))}
           </div>
         </div>
 

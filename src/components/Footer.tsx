@@ -20,6 +20,7 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
     { name: 'About', href: '#about' },
     { name: 'International Scope', href: '#international-career' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Project Directory', href: '#project-directory' },
     { name: 'Education Point', href: '#education-point' },
     { name: 'Founder & Builder', href: '#founder' },
     { name: 'Skills & Tools', href: '#skills' },
@@ -30,10 +31,14 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
 
   const socialLinks = [
     { name: 'Email Direct', href: `mailto:${PERSONAL_INFO.email}`, note: PERSONAL_INFO.email },
-    { name: 'WhatsApp', href: PERSONAL_INFO.whatsappUrl, note: PERSONAL_INFO.phone },
+    { name: 'WhatsApp Direct', href: PERSONAL_INFO.whatsappUrl, note: PERSONAL_INFO.phoneInternational },
     { name: 'Education Point Platform', href: PERSONAL_INFO.websiteUrl, note: 'educationpoint360.netlify.app' },
-    { name: 'Portfolio Identity', href: PERSONAL_INFO.portfolioUrl, note: 'rizwanep.netlify.app' },
-    { name: 'Instagram', href: PERSONAL_INFO.instagramUrl, note: PERSONAL_INFO.instagramHandle },
+    { name: 'Official Portfolio', href: PERSONAL_INFO.portfolioUrl, note: 'rizwanportfolio01.netlify.app (Canonical)' },
+    { name: 'Previous Reference', href: PERSONAL_INFO.alternatePortfolioUrl, note: 'rizwanep.netlify.app' },
+    { name: 'Personal Instagram', href: PERSONAL_INFO.personalInstagram, note: PERSONAL_INFO.personalInstagramHandle },
+    { name: 'Facebook', href: PERSONAL_INFO.facebookUrl, note: 'Muhammad Rizwan' },
+    { name: 'YouTube', href: PERSONAL_INFO.youtubeUrl, note: PERSONAL_INFO.youtubeHandle },
+    { name: 'Education Point IG', href: PERSONAL_INFO.instagramUrl, note: PERSONAL_INFO.instagramHandle },
     { name: 'WhatsApp Channel', href: PERSONAL_INFO.whatsappChannelUrl, note: 'Official Announcements' },
   ];
 
@@ -182,7 +187,11 @@ export default function Footer({ onOpenCvModal }: FooterProps) {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span>© {new Date().getFullYear()} Muhammad Rizwan. All Rights Reserved.</span>
             <span>•</span>
+            <span>Founder &amp; Owner — Education Point</span>
+            <span>•</span>
             <span>Mianwali, Pakistan</span>
+            <span>•</span>
+            <span className="text-[11px] opacity-80">Think Digital. Build Future.</span>
           </div>
 
           <button

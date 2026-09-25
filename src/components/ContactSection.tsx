@@ -15,6 +15,8 @@ import {
   MessageCircle,
   Globe,
   Radio,
+  Youtube,
+  Facebook,
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundFX } from '../utils/audio';
@@ -60,7 +62,7 @@ export default function ContactSection() {
 
   const getDirectWhatsAppUrl = () => {
     const text = encodeURIComponent(
-      `Hello Muhammad Rizwan, I came across your portfolio (rizwanep.netlify.app) and would like to discuss a project or collaboration!`
+      `Hello Muhammad Rizwan, I came across your portfolio (https://rizwanportfolio01.netlify.app/) and would like to discuss a project or collaboration!`
     );
     return `https://wa.me/923314220506?text=${text}`;
   };
@@ -215,6 +217,55 @@ export default function ContactSection() {
 
                 {/* Verified Social & Community Channels */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {/* Personal Instagram */}
+                  <a
+                    href={PERSONAL_INFO.personalInstagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-2xl border flex items-center justify-between transition-colors ${
+                      isDark ? 'bg-[#1A1A24] border-[#2C2C3C] hover:border-emerald-500/50' : 'bg-[#FFFFFF] border-[#E2E2D6] hover:border-[#18181B]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Instagram className="w-3.5 h-3.5 text-pink-500" />
+                      <span className="truncate font-semibold">{PERSONAL_INFO.personalInstagramHandle} (Personal)</span>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+
+                  {/* Facebook */}
+                  <a
+                    href={PERSONAL_INFO.facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-2xl border flex items-center justify-between transition-colors ${
+                      isDark ? 'bg-[#1A1A24] border-[#2C2C3C] hover:border-emerald-500/50' : 'bg-[#FFFFFF] border-[#E2E2D6] hover:border-[#18181B]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Facebook className="w-3.5 h-3.5 text-blue-500" />
+                      <span className="truncate font-semibold">Facebook Profile</span>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+
+                  {/* YouTube */}
+                  <a
+                    href={PERSONAL_INFO.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-3 rounded-2xl border flex items-center justify-between transition-colors ${
+                      isDark ? 'bg-[#1A1A24] border-[#2C2C3C] hover:border-emerald-500/50' : 'bg-[#FFFFFF] border-[#E2E2D6] hover:border-[#18181B]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Youtube className="w-3.5 h-3.5 text-red-500" />
+                      <span className="truncate font-semibold">{PERSONAL_INFO.youtubeHandle}</span>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+
+                  {/* Education Point Instagram */}
                   <a
                     href={PERSONAL_INFO.instagramUrl}
                     target="_blank"
@@ -230,17 +281,18 @@ export default function ContactSection() {
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
 
+                  {/* WhatsApp Channel */}
                   <a
                     href={PERSONAL_INFO.whatsappChannelUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 rounded-2xl border flex items-center justify-between transition-colors ${
+                    className={`p-3 rounded-2xl border flex items-center justify-between transition-colors sm:col-span-2 ${
                       isDark ? 'bg-[#1A1A24] border-[#2C2C3C] hover:border-emerald-500/50' : 'bg-[#FFFFFF] border-[#E2E2D6] hover:border-[#18181B]'
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <Radio className="w-3.5 h-3.5 text-emerald-500" />
-                      <span className="truncate font-semibold">WhatsApp Channel</span>
+                      <span className="truncate font-semibold">Education Point Official WhatsApp Channel</span>
                     </div>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>

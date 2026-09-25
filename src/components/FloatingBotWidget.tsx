@@ -45,18 +45,29 @@ const QUICK_PROMPTS = [
   {
     label: 'Who is Muhammad Rizwan?',
     response:
-      "Muhammad Rizwan is a Founder, Educationist, and Digital Architect based in Mianwali, Pakistan. He is the Founder & Owner of Education Point and creates practical digital products and accessible learning platforms.",
+      "Muhammad Rizwan is a Founder, Educationist, and Digital Architect from Mianwali, Pakistan. He is the Founder & Owner of Education Point, a free educational platform created to help students access educational resources digitally.",
+  },
+  {
+    label: 'Mission & Philosophy',
+    response:
+      "Guided by 'Think Digital. Build Future.', Muhammad Rizwan architects free and accessible educational platforms to empower Pakistani students with quality digital learning resources.",
   },
   {
     label: 'Tell me about Education Point',
     response:
-      "Education Point is Rizwan's flagship digital learning initiative that has reached over 50,000+ students across Pakistan, providing free digital notes, past papers, syllabus guides, and career guidance.",
+      "Education Point is a free educational platform created to help Pakistani students access academic resources digitally—including 9th–12th class notes, MCQs, past papers, guess papers, pairing schemes, test series, and entry test preparation material.",
     actionType: 'education-point',
+  },
+  {
+    label: 'What verified projects has he created?',
+    response:
+      "Muhammad Rizwan has built 5 verified digital platforms: Education Point (Flagship EdTech), Education Point AI (learning companion), Education Point Courses (modular tracks), NUR Islamic (Islamic resources PWA), and SoulBook (social web platform).",
+    actionType: 'projects',
   },
   {
     label: 'What is his Tech Stack?',
     response:
-      "Rizwan specializes in TypeScript, React, Next.js, Node.js, Tailwind CSS, Python for AI workflows, WebGL / Three.js 3D spatial interfaces, and REST API architecture.",
+      "Rizwan specializes in Education Technology, Web Development, Frontend Architecture, Progressive Web Apps (PWA), HTML/CSS/JavaScript, REST APIs, and AI endpoint integration.",
     actionType: 'skills',
   },
   {
@@ -68,13 +79,13 @@ const QUICK_PROMPTS = [
   {
     label: 'Open to International Work?',
     response:
-      "Yes! Rizwan is actively open to international remote collaborations, software engineering internships, frontend development, and educational tech consulting.",
+      "Yes! Rizwan is actively open to international remote collaborations, web development, and educational technology consulting.",
     actionType: 'international',
   },
   {
     label: 'How can I contact him directly?',
     response:
-      "You can message Rizwan directly on WhatsApp at +92 331 4220506 or email him at educationpoint0360@gmail.com. He usually responds within 2-4 hours!",
+      "You can message Rizwan directly on WhatsApp at +92 331 4220506 or email him at educationpoint0360@gmail.com. He usually responds promptly!",
     actionType: 'whatsapp',
   },
 ];

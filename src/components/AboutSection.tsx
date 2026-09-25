@@ -145,34 +145,49 @@ export default function AboutSection({ onOpenCvModal }: AboutSectionProps) {
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
             {/* Bio Paragraphs */}
             <div className={`space-y-4 text-base sm:text-lg leading-relaxed font-normal ${isDark ? 'text-[#A6A6B4]' : 'text-[#57575E]'}`}>
-              <p className={`relative pl-4 border-l-2 ${isDark ? 'border-[#353548] text-[#E2E2E6]' : 'border-[#E6E5DC] text-[#333338]'}`}>
-                {PERSONAL_INFO.professionalBio}
+              <p className={`relative pl-4 border-l-2 ${isDark ? 'border-emerald-500/70 text-[#E2E2E6]' : 'border-emerald-600/70 text-[#333338]'}`}>
+                {PERSONAL_INFO.aboutMe}
               </p>
               <p className={`relative pl-4 border-l-2 ${isDark ? 'border-[#353548] text-[#D0D0D8]' : 'border-[#E6E5DC] text-[#44444C]'}`}>
-                Through self-directed learning and continuous experimentation with modern web technologies, he created Education Point to make high-yield study materials accessible to students. His work also extends into AI-assisted learning tools, Progressive Web Apps (PWA), and social platform prototypes.
+                His work is focused on making useful academic resources organized and accessible with zero financial friction, while exploring how modern web architecture, Progressive Web Apps, and emerging AI technologies can provide everyday utility.
+              </p>
+            </div>
+
+            {/* Verified Digital Identity & Leadership Card */}
+            <div className={`p-4 rounded-2xl border text-xs font-mono transition-colors ${
+              isDark ? 'bg-[#12121A] border-[#2A2A3A] text-[#C0C0D0]' : 'bg-[#F7F7F2] border-[#E2E2D6] text-[#44444E]'
+            }`}>
+              <div className="flex items-center gap-2 text-emerald-500 font-bold mb-1.5">
+                <ShieldCheck className="w-4 h-4" />
+                <span className="uppercase tracking-wider text-[10px] font-semibold">Verified Digital Identity & Leadership</span>
+              </div>
+              <p className="text-[11px] leading-relaxed">
+                Official digital portfolio and verified web presence of <strong className={isDark ? 'text-white' : 'text-black'}>Muhammad Rizwan</strong> — Founder, Educationist and Digital Architect from Mianwali, Pakistan. Founder &amp; Owner of <strong className={isDark ? 'text-emerald-400' : 'text-emerald-600'}>Education Point</strong>, dedicated to engineering accessible educational platforms, progressive web applications, and independent digital initiatives.
               </p>
             </div>
 
             {/* Areas of Practice (Unboxed text with typographic separators, zero-pill discipline) */}
-            <div className="pt-4">
+            <div className="pt-2">
               <h4 className={`text-xs font-mono font-semibold tracking-wider uppercase mb-3 flex items-center gap-2 ${
                 isDark ? 'text-[#F4F4F6]' : 'text-[#18181B]'
               }`}>
                 <Terminal className="w-3.5 h-3.5" />
-                <span>Key Areas of Practice</span>
+                <span>Professional Focus & Disciplines</span>
               </h4>
               <div className="flex flex-wrap gap-2 text-xs">
                 {[
-                  "Digital Product Development",
-                  "Educational Technology (EdTech)",
-                  "Frontend Architecture",
-                  "AI Endpoint Integration",
+                  "Education Technology",
+                  "Digital Education",
+                  "Web Development",
+                  "Frontend Development",
+                  "Educational Platforms",
                   "Progressive Web Apps (PWA)",
-                  "Curriculum Organization",
-                  "Student Community Building"
+                  "Digital Products",
+                  "Student-Focused Technology",
+                  "Online Educational Resources"
                 ].map((area, idx, arr) => (
                   <span key={area} className="inline-flex items-center">
-                    <span className={`py-1 ${isDark ? 'text-[#E2E2EA]' : 'text-[#2D2D34]'}`}>
+                    <span className={`py-1 font-medium ${isDark ? 'text-[#E2E2EA]' : 'text-[#2D2D34]'}`}>
                       {area}
                     </span>
                     {idx < arr.length - 1 && (

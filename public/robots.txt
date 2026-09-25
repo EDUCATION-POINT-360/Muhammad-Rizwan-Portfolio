@@ -1,0 +1,9 @@
+# Robots.txt for Muhammad Rizwan Official Portfolio
+# Canonical URL: https://rizwanportfolio01.netlify.app/
+
+User-agent: *
+Allow: /
+Disallow: /cv/
+
+# Sitemaps
+Sitemap: https://rizwanportfolio01.netlify.app/sitemap.xml

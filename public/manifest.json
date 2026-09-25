@@ -1,0 +1,21 @@
+{
+  "name": "Muhammad Rizwan — Founder • Educationist • Digital Architect",
+  "short_name": "MR Portfolio",
+  "description": "Official digital portfolio of Muhammad Rizwan, Founder & Owner of Education Point, digital creator, and educationist from Mianwali, Pakistan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0C0C0F",
+  "theme_color": "#0C0C0F",
+  "icons": [
+    {
+      "src": "/assets/images/rizwan_anime_avatar_1790075294566.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/assets/images/rizwan_anime_avatar_1790075294566.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ const NAV_LINKS = [
   { name: 'About', href: '#about', id: 'about' },
   { name: 'Global Scope', href: '#international-career', id: 'international-career' },
   { name: 'Projects', href: '#projects', id: 'projects' },
+  { name: 'Directory', href: '#project-directory', id: 'project-directory' },
   { name: 'Education Point', href: '#education-point', id: 'education-point' },
   { name: 'Founder', href: '#founder', id: 'founder' },
   { name: 'Skills', href: '#skills', id: 'skills' },

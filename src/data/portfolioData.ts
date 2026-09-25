@@ -1,23 +1,25 @@
-import { ProjectItem, EducationItem, JourneyStep, SkillCategory, InterestItem } from '../types';
+import { ProjectItem, EducationItem, JourneyStep, SkillCategory, InterestItem, ProjectDirectoryEntry } from '../types';
 
 export const PERSONAL_INFO = {
   name: "Muhammad Rizwan",
   title: "Founder • Educationist • Digital Architect",
   roles: [
     "Founder",
-    "Digital Product Builder",
-    "Education Technology Creator",
+    "Educationist",
     "Digital Architect",
-    "Web Developer"
+    "Web / Digital Project Creator",
+    "Founder & Owner — Education Point"
   ],
   headline: "Founder • Educationist • Digital Architect",
+  primaryRole: "Founder & Owner — Education Point",
   alternativePositioning: "Digital Product Builder | Founder | Education Technology Creator",
   location: "Mianwali, Pakistan",
   country: "Pakistan",
   motto: "Think Digital. Build Future.",
   secondaryMotto: "Learn • Create • Improve • Repeat",
-  shortIntro: "I'm Muhammad Rizwan, a founder and digital product builder focused on creating useful, accessible and modern digital experiences across education, web applications and technology.",
-  professionalBio: "Muhammad Rizwan is the Founder & Owner of Education Point and a digital creator focused on building practical technology-driven platforms. His work combines education, web development, digital product design and technology experimentation. He is particularly interested in turning ideas into usable digital products and creating technology that provides practical value to students and users.",
+  shortIntro: "Muhammad Rizwan is a Founder, Educationist and Digital Architect from Mianwali, Pakistan. He is the Founder & Owner of Education Point, a free educational platform created to help students access educational resources digitally.",
+  aboutMe: "Muhammad Rizwan is a Founder, Educationist and Digital Architect from Mianwali, Pakistan. He is the Founder & Owner of Education Point, a free educational platform created to help students access educational resources digitally. He also works on independent digital projects spanning education, AI, Islamic resources, courses, productivity and online platforms.",
+  professionalBio: "Muhammad Rizwan is a Founder, Educationist and Digital Architect from Mianwali, Pakistan. He is the Founder & Owner of Education Point, a free educational platform created to help students access educational resources digitally. He also works on independent digital projects spanning education, AI, Islamic resources, courses, productivity and online platforms.",
   founderStatement: "I believe technology becomes meaningful when it solves real problems. My focus is on turning ideas into practical digital products that people can actually use.",
   globalOpportunitiesStatement: "Open to relevant international opportunities and collaborations.",
   openStatus: "Open to International Opportunities",
@@ -26,14 +28,16 @@ export const PERSONAL_INFO = {
   whatsappUrl: "https://wa.me/923314220506",
   email: "educationpoint0360@gmail.com",
   websiteUrl: "https://educationpoint360.netlify.app/",
-  portfolioUrl: "https://rizwanep.netlify.app/",
-  instagramUrl: "https://www.instagram.com/educ.ationpointofficial/",
-  instagramHandle: "@educ.ationpointofficial",
-  whatsappChannelUrl: "https://whatsapp.com/channel/0029Vb7bYUSJUM2eWSlWfo36",
+  portfolioUrl: "https://rizwanportfolio01.netlify.app/",
+  alternatePortfolioUrl: "https://rizwanep.netlify.app/",
+  facebookUrl: "https://www.facebook.com/share/1C3r1Jy8QH/",
   personalInstagram: "https://www.instagram.com/itx.wani1",
   personalInstagramHandle: "@itx.wani1",
   youtubeUrl: "https://youtube.com/@educationpoint998",
   youtubeHandle: "@educationpoint998",
+  instagramUrl: "https://www.instagram.com/educ.ationpointofficial/",
+  instagramHandle: "@educ.ationpointofficial",
+  whatsappChannelUrl: "https://whatsapp.com/channel/0029Vb7bYUSJUM2eWSlWfo36",
   personalityDescription: "A self-directed digital builder motivated by creating useful platforms, practical systems, and empowering students through educational technology.",
   personalityTraits: [
     "Independent Builder",
@@ -47,6 +51,18 @@ export const PERSONAL_INFO = {
     "Technology Enthusiast"
   ],
   digitalPhilosophyQuote: "Technology is most impactful when it bridges knowledge gaps and makes real daily utility accessible to everyday users."
+};
+
+export const ENTITY_DISAMBIGUATION = {
+  name: "Muhammad Rizwan",
+  title: "Founder • Educationist • Digital Architect",
+  primaryRole: "Founder & Owner — Education Point",
+  location: "Mianwali, Pakistan",
+  distinction: "Pakistani founder, educationist, and digital architect — Founder & Owner of Education Point.",
+  statement: "This website is the official digital portfolio of Muhammad Rizwan, Founder & Owner of Education Point and digital creator from Mianwali, Pakistan. All achievements, links, and projects listed represent verified software, education technology, and digital platforms.",
+  canonicalUrl: "https://rizwanportfolio01.netlify.app/",
+  alternateUrl: "https://rizwanep.netlify.app/",
+  brandStatement: "Think Digital. Build Future."
 };
 
 export const QUICK_PROFILE = {
@@ -127,30 +143,109 @@ export const FOUNDER_EXPERIENCE = [
 
 export const EDUCATION_POINT_DETAILS = {
   title: "Building Education Point",
-  role: "Founder & Owner",
+  name: "Education Point",
+  role: "Founder & Owner — Muhammad Rizwan",
+  founder: "Muhammad Rizwan",
   tagline: "Learn • Prepare • Succeed",
-  statement: "Education Point is a student-focused educational platform created to make useful academic resources more accessible and organized.",
+  brandPhrases: [
+    "Education Point | Learn. Grow. Achieve.",
+    "Learn • Prepare • Succeed",
+    "Where quality meets consistency"
+  ],
+  purpose: "A free educational resource platform for Pakistani students.",
+  statement: "Education Point is a free educational platform created to help students access educational resources digitally.",
   websiteUrl: "https://educationpoint360.netlify.app/",
   schemeUrl: "https://educationpoint360.netlify.app/scheme",
+  targetAudience: [
+    "Matric students (9th & 10th Class)",
+    "Intermediate students (11th & 12th Class)",
+    "Entry Test students (MDCAT & ECAT)",
+    "Competitive-test preparation students (PAF, PMA / Army)",
+    "Pakistani students seeking free study resources"
+  ],
   coreAreas: [
+    "9th Class",
+    "10th Class",
+    "11th Class",
+    "12th Class",
     "Matric",
     "Intermediate",
-    "Entry Test Preparation",
-    "Notes",
+    "Entry Tests",
     "MCQs",
+    "Notes",
     "Past Papers",
-    "Pairing Schemes",
     "Guess Papers",
+    "Pairing Schemes",
     "Test Series",
-    "Preparation Material"
+    "Mock Tests",
+    "Preparation Material",
+    "Keybooks",
+    "MDCAT",
+    "ECAT",
+    "PAF Preparation",
+    "Army / PMA Preparation",
+    "Other Test Preparation Resources"
   ],
   stats: [
     { label: "Target Classes", value: "9th, 10th, 11th, 12th" },
-    { label: "Resource Types", value: "10 Core Academic Categories" },
-    { label: "Mission", value: "Equitable Student Access" },
-    { label: "Access Model", value: "Free & Open Digital Portal" }
+    { label: "Core Categories", value: "Notes, MCQs, Schemes & Tests" },
+    { label: "Access Model", value: "100% Free Educational Platform" },
+    { label: "Standard", value: "Where quality meets consistency" }
   ]
 };
+
+export const PROJECT_DIRECTORY: ProjectDirectoryEntry[] = [
+  {
+    name: "Education Point",
+    description: "A free educational resource platform for Pakistani students providing 9th–12th class notes, MCQs, past papers, guess papers, pairing schemes, test series, and entry test preparation material.",
+    category: "Education / EdTech",
+    liveUrl: "https://educationpoint360.netlify.app/",
+    creator: "Muhammad Rizwan (Founder & Owner)",
+    technology: "Responsive Web / Curriculum Architecture",
+    status: "Active Production",
+    association: "Flagship Educational Platform"
+  },
+  {
+    name: "Education Point AI",
+    description: "An AI-focused digital project associated with Education Point and Muhammad Rizwan exploring intelligent student concept clarification and assistive learning workflows.",
+    category: "AI / EdTech",
+    liveUrl: "https://edupointai.netlify.app/",
+    creator: "Muhammad Rizwan",
+    technology: "AI Web Application / API Integration",
+    status: "Active Production",
+    association: "Education Point Ecosystem"
+  },
+  {
+    name: "Education Point Courses",
+    description: "A course-focused educational project associated with the Education Point ecosystem offering modular learning tracks and structured digital skill development.",
+    category: "Education / Courses",
+    liveUrl: "https://epcourse.netlify.app/",
+    creator: "Muhammad Rizwan",
+    technology: "Online Learning Catalog / Web UI",
+    status: "Active Production",
+    association: "Education Point Ecosystem"
+  },
+  {
+    name: "NUR Islamic",
+    description: "A digital Islamic resources project focused on providing Quran, Hadith, prayer timings, Tasbeeh counter, and daily Adhkar through an ad-free Progressive Web App.",
+    category: "Islamic Digital Resources",
+    liveUrl: "https://nurislamic.netlify.app/",
+    creator: "Muhammad Rizwan",
+    technology: "Progressive Web App (PWA) / Offline Support",
+    status: "Active Production",
+    association: "Independent Digital Project"
+  },
+  {
+    name: "SoulBook",
+    description: "A digital web project created as part of Muhammad Rizwan's portfolio of independent web applications demonstrating reactive social UI architecture and user state management.",
+    category: "Digital Web Project",
+    liveUrl: "https://soulbook.netlify.app/",
+    creator: "Muhammad Rizwan",
+    technology: "Social Platform UI / Client State Management",
+    status: "Active Production",
+    association: "Independent Digital Project"
+  }
+];
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
